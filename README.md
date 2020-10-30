@@ -4,7 +4,7 @@ Official NodeJS SDK for accessing and integrating Stocknote API
 
 This documentation covers details of the NodeJS bridge / SDK provided by SAMCO, for accessing the [SAMCO Stocknote APIs](https://developers.stocknote.com/api/?NodeJS#stocknote-api-documentation).
 
-The primary purpose of this NodeJS Bridge is to help our customers quickly create NodeJS based client scripts using our SDK and integrate with StockNote APIs. Our NodeJS Bridge provides a wrapper over the RESTful StockNote APIs where the HTTP calls have been converted to method calls with JSON responses. Websocket connections are handled automatically with the library.
+The primary purpose of this NodeJS Bridge is to help our customers quickly create NodeJS based client scripts using our SDK and integrate with StockNote APIs. Our NodeJS Bridge provides a wrapper over the RESTful StockNote APIs where the HTTP calls have been converted to method calls with JSON responses.
 
 Please refer the below documentation for details on installation, set up and API specific sample code/request-responses to create your own NodeJS client code.
 
@@ -13,7 +13,7 @@ Please refer the below documentation for details on installation, set up and API
 This module is installed via npm:
 
 ```
-npm install stocknotebridge
+npm install stocknotejsbridge
 ```
 Once done, you can verify if package is appropriately installed using  below command.
 
@@ -1351,7 +1351,7 @@ sn.snapi.holdings().then((data) => { console.log("GetHoldings:" + data); }).catc
 
 ## IntraDayCandleData
 
-The IndexIntraDayCandleData function `intradayCandleData()` gets the Intraday candle data such as Open, high, low, close and volume within specific time period per min for a specific symbol.
+The IndexIntraDayCandleData function `intradayCandleData()` gets the Intraday candle data such as Open, high, low, close and volume within specific time period.
 
 #### Parameters:
 ```NodeJS
@@ -1441,8 +1441,6 @@ sn.snapi.intradayCandleData("INFY","2020-06-17 10:22:00",candle).then((data) => 
     }
   ]
 }
-
-
   ```
 </details>
 
@@ -1450,7 +1448,7 @@ sn.snapi.intradayCandleData("INFY","2020-06-17 10:22:00",candle).then((data) => 
 
 ### IndexIntraDayCandleData
 
-The IndexIntraDayCandleData function `indexIntradayCandleData()` gets the Index intraday candle data such as Open, high, low, close and volume within specific time period per min for a specific index.
+The IndexIntraDayCandleData function `indexIntradayCandleData()` gets the Index intraday candle data such as Open, high, low, close and volume within specific time period.
 
 #### Parameters:
 ```javascript
