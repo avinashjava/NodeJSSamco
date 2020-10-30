@@ -1105,16 +1105,13 @@ The Postions function `userPostions()` gets the position details of the user (Th
 ```NodeJS
 positiontype
 ```
-#### Sample Positions Request:
 <details>
-  <summary>Sample TradeBook Request</summary>
+  <summary>Sample Positions Request</summary>
   
   ```javascript
 sn.snapi.userPostions("DAY").then((data) => { console.log("UserPositions:" + data); }).catch((error) => { console.error(error) });
   ```
 </details>
-
-    samco.get_positions_data(position_type=samco.POSITION_TYPE_DAY)
 
 <details>
   <summary>Sample Positions Response</summary>
@@ -1172,9 +1169,9 @@ The PostionConversion function `postionConversion()` is used to convert an exist
 ```javascript
 symbolName,exchange,transactionType,positionType,quantityToConvert,fromProductType,toProductType,netQuantity
 ```
-##### Sample PositionConverstion Request:
+
 <details>
-  <summary>Sample TradeBook Request</summary>
+  <summary>Sample PositionConverstion Request</summary>
   
   ```javascript
 var conversion = {
@@ -1230,7 +1227,6 @@ var squareOff = {
         "netQuantity":"1",
         "transactionType":sn.constants.TRANSACTION_TYPE_BUY
     }
-    
 };
 
 sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
@@ -1260,13 +1256,11 @@ sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquare
 
 The Holdings function `holdings()` helps the user to get the details of the Stocks which client is holding. Here, you will be able to get the Client holdings which are bought under ‘CNC’ product type and are not sold yet.
 
-#### :
 <details>
   <summary>Sample Holdings Request</summary>
   
   ```javascript
 sn.snapi.holdings().then((data) => { console.log("GetHoldings:" + data); }).catch((error) => { console.error(error) });
-
   ```
 </details>
 
@@ -1370,8 +1364,6 @@ var candle = {
 sn.snapi.intradayCandleData("INFY","2020-06-17 10:22:00",candle).then((data) => { console.log("intradayCandleData:" + data); }).catch((error) => { console.error(error) });
  ```
 </details>
-
-    samco.get_intraday_candle_data(symbol_name='',exchange=samco.EXCHANGE_NSE, from_date='',to_date='')
 
 <details>
   <summary>Sample IntraDayCandleData Response</summary>
@@ -1527,9 +1519,6 @@ sn.snapi.indexIntradayCandleData("sensex","2020-06-16 09:23:00",indexData).then(
     }
   ]
 }
-
-
-
   ```
 </details>
 
