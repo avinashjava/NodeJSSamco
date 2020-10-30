@@ -75,17 +75,17 @@ For specific details on parameters passed on the request, and details about API 
 </details>
 
 ## API Promises
-
+```javascript
 All API calls returns a promise which you can use to call methods like .then(...) and .catch(...).
+stocknoteapijsbridgeAPI()
+    .then(function(v) {
+        // On success
+    })
+    .catch(function(e) {
+        // On rejected
+    });
 
-userLogin()
-	.then(function(v) {
-	    // On success
-	})
-	.catch(function(e) {
-		// On rejected
-	});
-
+```
 ## Using the API
 
 As a first step to access StockNote APIs, you need to import our SDK in your client code and then login to get valid session token.
