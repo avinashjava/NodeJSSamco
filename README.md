@@ -178,78 +178,83 @@ The search function `search()` should be used to search equity, derivatives and 
 ```javascript
 searchSymbolName,exchange
 ```
-
 <details>
-  <summary>Sample Search Request</summary>
+  <summary>Sample Search Request/Response  for Cash segment</summary>
   
+  Request :
   ```javascript
-    var seareddata = {
-    "exchange": sn.constants.EXCHANGE_NFO,
-    }
-    
-   sn.snapi.search("TCS", seareddata)
-    .then((data) => {
-      console.log('Search:' + data);
-    }).catch((error) => {
-        console.log(error)
-    });
+  var search={
+    "exchange": sn.constants.EXCHANGE_NSE,
+  }
+  sn.snapi.search("TC",search).then((data) => { console.log('Search:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
-
-<details>
-  <summary>Sample Search Response</summary>
-  
+  Response :  
   ```javascript
-	search:{
- "msgId": "a9080992-71f3-47a9-9b53-b6103f4eb6ba",
-  "status": "Success",
-  "statusMessage": "Equity Search details retrieved successfully",
-  "equityDertivativeValues": [
-       {
-            "tradingSymbol": "BANKNIFTY20JUN21000CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN22000CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN20500CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN20000CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN19000PE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN20000PE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN21500CE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        },
-        {
-            "tradingSymbol": "BANKNIFTY20JUN19500PE",
-            "instrument": "OPTIDX",
-            "exchange": "NFO"
-        }
-    ]
+  Search:{
+ "msgId": "de6c1332-3d4b-4371-a9d1-b52787c039a9",
+ "status": "Success",
+ "statusMessage": "Equity Search details retrieved successfully",
+ "searchResults": [
+  {
+   "exchange": "NSE",
+   "scripDescription": "TATA CONSULTANCY SERV LT",
+   "tradingSymbol": "TCS-EQ",
+   "isin": "INE467B01029",
+   "tickSize": "0.05",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "NSE",
+   "scripDescription": "TCI DEVELOPERS LIMITED",
+   "tradingSymbol": "TCIDEVELOP-EQ",
+   "isin": "INE662L01016",
+   "tickSize": "0.05",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "NSE",
+   "scripDescription": "TCI EXPRESS LIMITED",
+   "tradingSymbol": "TCIEXP-EQ",
+   "isin": "INE586V01016",
+   "tickSize": "0.05",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "NSE",
+   "scripDescription": "TCI FINANCE LTD",
+   "tradingSymbol": "TCIFINANCE-EQ",
+   "isin": "INE911B01018",
+   "tickSize": "0.05",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "NSE",
+   "scripDescription": "TCNS CLOTHING CO. LIMITED",
+   "tradingSymbol": "TCNSBRANDS-EQ",
+   "isin": "INE778U01029",
+   "tickSize": "0.05",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "NSE",
+   "scripDescription": "TCPL PACKAGING LIMITED",
+   "tradingSymbol": "TCPLPACK-EQ",
+   "isin": "INE822C01015",
+   "tickSize": "0.05",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "NSE",
+   "scripDescription": "TRANSPORT CORPN OF INDIA",
+   "tradingSymbol": "TCI-EQ",
+   "isin": "INE688A01022",
+   "tickSize": "0.05",
+   "bodLotQuantity": "1"
+  }
+ ]
 }
   ```
 </details>
-
 
 <a name="quote"/>
 
