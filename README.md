@@ -265,9 +265,7 @@ symbolName,exchange
 <details>
   <summary>Sample Quote Request  for Cash segment</summary>
 
-<details>
-  <summary>Request</summary>
-  
+Request:  
   ```javascript
 	var quotedata = {
 		"exchange": sn.constants.EXCHANGE_NSE,
@@ -275,12 +273,8 @@ symbolName,exchange
 
 	sn.snapi.getQuotes("INFY",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
 
-
-<details>
-  <summary>Response</summary>
-  
+ Response:  
   ```javascript
   GetQuotes:{
   "serverTime": "19/11/20 17:28:04",
@@ -369,16 +363,11 @@ symbolName,exchange
   }
   ```
 </details>
-</details>
-
-
 
 <details>
   <summary>Sample Quote Request for Future & Options segment</summary>
 
-<details>
-  <summary>Request</summary>
-  
+Request:  
   ```javascript
 	var quotedata = {
 		"exchange": sn.constants.EXCHANGE_NFO,
@@ -386,11 +375,7 @@ symbolName,exchange
 
 	sn.snapi.getQuotes("INFY20NOVFUT",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
-
-
-<details>
-  <summary>Response</summary>
+Response:
   
   ```javascript
 	GetQuotes:{
@@ -479,14 +464,11 @@ symbolName,exchange
 	}
   ```
 </details>
-</details>
 
 <details>
   <summary>Sample Quote Request for Currency segment</summary>
 
-<details>
-  <summary>Request</summary>
-  
+Request :  
   ```javascript
 	var quotedata = {
 		"exchange": sn.constants.EXCHANGE_CDS,
@@ -494,11 +476,7 @@ symbolName,exchange
 
 	sn.snapi.getQuotes("USDINR20DEC75PE",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
-
-
-<details>
-  <summary>Response</summary>
+Response :
   
   ```javascript
     GetQuotes:{
@@ -590,18 +568,13 @@ symbolName,exchange
       "openInterestChange": "351",
       "oIChangePer": "1.19"
       }
-
   ```
-</details>
 </details>
 
 
 <details>
   <summary>Sample Quote Request for Commodity segment</summary>
-
-<details>
-  <summary>Request</summary>
-  
+Request :  
   ```javascript
 	var quotedata = {
 		"exchange": sn.constants.EXCHANGE_MCX,
@@ -609,12 +582,8 @@ symbolName,exchange
 
 	sn.snapi.getQuotes("GOLDM21JANFUT",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
 
-
-<details>
-  <summary>Response</summary>
-  
+Response :  
   ```javascript
     GetQuotes:{
       "serverTime": "19/11/20 17:53:08",
@@ -708,11 +677,6 @@ symbolName,exchange
       }
   ```
 </details>
-</details>
-
-
-
-
 
 <a name='indexQuote'/>
 
