@@ -93,7 +93,7 @@ As a first step to access StockNote APIs, you need to import our SDK in your cli
 ### Import the NodeJS SDK and get a session token
 1. consume  StocknoteAPIJSBridge module
 ```
-var sn = require('stocknoteapijsbridge');
+var sn = require('stocknotejsbridge');
 ```
 2. Login to access Stocknote API by providing below parameters.
 
@@ -1220,12 +1220,16 @@ symbolName,exchange,transactionType,productType,netQuantity
   
   ```javascript
 var squareOff = {
-    body: {
-        "exchange": sn.constants.EXCHANGE_NSE,
-        "symbolName":"TCS",
-        "productType":sn.constants.PRODUCT_MIS,
-        "netQuantity":"1",
-        "transactionType":sn.constants.TRANSACTION_TYPE_BUY
+    body: { 
+        "positionSquareOffRequestList": [
+        {
+            "exchange":sn.constants.EXCHANGE_NSE,
+            "symbolName":"TCS",
+            "productType":sn.constants.PRODUCT_MIS,
+            "netQuantity":"1",
+            "transactionType":sn.constants.TRANSACTION_TYPE_BUY
+        }    
+       ]
     }
 };
 
@@ -1455,7 +1459,7 @@ var indexData = {
     "toDate": "2020-06-16 9:28:00"
 };
 
-sn.snapi.indexIntradayCandleData("sensex","2020-06-16 09:23:00",indexData).then((data) => { console.log("intradayCandleData:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.indexIntradayCandleData("sensex","2020-06-16 09:23:00",indexData).then((data) => { console.log("indexIntradayCandleData:" + data); }).catch((error) => { console.error(error) });
   ```
 </details>
 
