@@ -263,8 +263,121 @@ The Quote function name in NodeJS is `getQuotes()`
 symbolName,exchange
 ```
 <details>
+  <summary>Sample Quote Request  for Cash segment</summary>
+
 <details>
-  <summary>Sample Quote request</summary>
+  <summary>Request</summary>
+  
+  ```javascript
+	var quotedata = {
+		"exchange": sn.constants.EXCHANGE_NSE,
+	}
+
+	sn.snapi.getQuotes("INFY",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
+  ```
+</details>
+
+
+<details>
+  <summary>Response</summary>
+  
+  ```javascript
+  GetQuotes:{
+  "serverTime": "19/11/20 17:28:04",
+  "msgId": "ba01c95a-3f07-46ad-9a09-efc42f4772ad",
+  "status": "Success",
+  "statusMessage": "Quote details retrieved successfully",
+  "symbolName": "INFY",
+  "tradingSymbol": "INFY-EQ",
+  "exchange": "NSE",
+  "companyName": "INFOSYS LIMITED",
+  "lastTradedTime": "19/11/2020 16:10:13",
+  "lastTradedPrice": "1100.00",
+  "previousClose": "1157.80",
+  "changeValue": "-57.80",
+  "changePercentage": "-4.99",
+  "lastTradedQuantity": "227",
+  "lowerCircuitLimit": "999.50",
+  "upperCircuitLimit": "1221.60",
+  "averagePrice": "1098.93",
+  "openValue": "1157.80",
+  "highValue": "1200.00",
+  "lowValue": "1055.50",
+  "closeValue": "1157.80",
+  "totalBuyQuantity": "87",
+  "totalSellQuantity": "0",
+  "totalTradedValue": "16.2861426 (Lacs)",
+  "totalTradedVolume": "1482",
+  "yearlyHighPrice": "0.00",
+  "yearlyLowPrice": "0.00",
+  "tickSize": "0.05",
+  "bestBids": [
+    {
+    "number": "1",
+    "quantity": "87",
+    "price": "1055.50"
+    },
+    {
+    "number": "2",
+    "quantity": "0",
+    "price": "0.00"
+    },
+    {
+    "number": "3",
+    "quantity": "0",
+    "price": "0.00"
+    },
+    {
+    "number": "4",
+    "quantity": "0",
+    "price": "0.00"
+    },
+    {
+    "number": "5",
+    "quantity": "0",
+    "price": "0.00"
+    }
+  ],
+  "bestAsks": [
+    {
+    "number": "1",
+    "quantity": "0",
+    "price": "0.00"
+    },
+    {
+    "number": "2",
+    "quantity": "0",
+    "price": "0.00"
+    },
+    {
+    "number": "3",
+    "quantity": "0",
+    "price": "0.00"
+    },
+    {
+    "number": "4",
+    "quantity": "0",
+    "price": "0.00"
+    },
+    {
+    "number": "5",
+    "quantity": "0",
+    "price": "0.00"
+    }
+  ],
+  "listingId": "1594_NSE"
+  }
+  ```
+</details>
+</details>
+
+
+
+<details>
+  <summary>Sample Quote Request for Future & Options segment</summary>
+
+<details>
+  <summary>Request</summary>
   
   ```javascript
 	var quotedata = {
@@ -274,10 +387,10 @@ symbolName,exchange
 	sn.snapi.getQuotes("INFY20NOVFUT",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
   ```
 </details>
-<summary>Sample Quote for Cash segment</summary>
+
 
 <details>
-  <summary>Sample Quote Response</summary>
+  <summary>Response</summary>
   
   ```javascript
 	GetQuotes:{
@@ -367,6 +480,240 @@ symbolName,exchange
   ```
 </details>
 </details>
+
+<details>
+  <summary>Sample Quote Request for Currency segment</summary>
+
+<details>
+  <summary>Request</summary>
+  
+  ```javascript
+	var quotedata = {
+		"exchange": sn.constants.EXCHANGE_CDS,
+	}
+
+	sn.snapi.getQuotes("USDINR20DEC75PE",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
+  ```
+</details>
+
+
+<details>
+  <summary>Response</summary>
+  
+  ```javascript
+    GetQuotes:{
+      "serverTime": "19/11/20 17:44:33",
+      "msgId": "2f65bcc2-8c06-4db1-8147-97f5f6301414",
+      "status": "Success",
+      "statusMessage": "Quote details retrieved successfully",
+      "tradingSymbol": "USDINR20DEC75PE",
+      "exchange": "NSE-CDS",
+      "lastTradedTime": "19/11/2020 05:00:00",
+      "lastTradedPrice": "0.8050",
+      "previousClose": "0.8375",
+      "changeValue": "-0.0325",
+      "changePercentage": "-3.88",
+      "lastTradedQuantity": "1",
+      "lowerCircuitLimit": "0.5150",
+      "upperCircuitLimit": "1.1600",
+      "averagePrice": "0.8078",
+      "openValue": "0.84",
+      "highValue": "0.84",
+      "lowValue": "0.78",
+      "closeValue": "0.8375",
+      "totalBuyQuantity": "115",
+      "totalSellQuantity": "1009",
+      "totalTradedValue": "1961.35",
+      "totalTradedVolume": "2428",
+      "yearlyHighPrice": "0.0000",
+      "yearlyLowPrice": "0.0000",
+      "tickSize": "0.0025",
+      "openInterest": "29937",
+      "bestBids": [
+        {
+        "number": "1",
+        "quantity": "2",
+        "price": "0.7975"
+        },
+        {
+        "number": "2",
+        "quantity": "4",
+        "price": "0.7725"
+        },
+        {
+        "number": "3",
+        "quantity": "1",
+        "price": "0.7500"
+        },
+        {
+        "number": "4",
+        "quantity": "15",
+        "price": "0.7025"
+        },
+        {
+        "number": "5",
+        "quantity": "1",
+        "price": "0.7000"
+        }
+      ],
+      "bestAsks": [
+        {
+        "number": "1",
+        "quantity": "35",
+        "price": "0.8225"
+        },
+        {
+        "number": "2",
+        "quantity": "10",
+        "price": "0.8350"
+        },
+        {
+        "number": "3",
+        "quantity": "9",
+        "price": "0.8400"
+        },
+        {
+        "number": "4",
+        "quantity": "1",
+        "price": "0.8500"
+        },
+        {
+        "number": "5",
+        "quantity": "500",
+        "price": "0.8900"
+        }
+      ],
+      "expiryDate": "29 Dec 20",
+      "instrument": "OPTCUR",
+      "lotQuantity": "1",
+      "listingId": "9192_CDS",
+      "openInterestChange": "351",
+      "oIChangePer": "1.19"
+      }
+
+  ```
+</details>
+</details>
+
+
+<details>
+  <summary>Sample Quote Request for Commodity segment</summary>
+
+<details>
+  <summary>Request</summary>
+  
+  ```javascript
+	var quotedata = {
+		"exchange": sn.constants.EXCHANGE_MCX,
+	}
+
+	sn.snapi.getQuotes("GOLDM21JANFUT",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
+  ```
+</details>
+
+
+<details>
+  <summary>Response</summary>
+  
+  ```javascript
+    GetQuotes:{
+      "serverTime": "19/11/20 17:53:08",
+      "msgId": "4aa3c562-0464-4e31-b382-b7f9dbd1832a",
+      "status": "Success",
+      "statusMessage": "Quote details retrieved successfully",
+      "tradingSymbol": "GOLDM21JAN57200PE",
+      "exchange": "MCX",
+      "companyName": "GOLDMINI995",
+      "lastTradedTime": "19/11/2020 01:22:51",
+      "lastTradedPrice": "0.00",
+      "previousClose": "6278.0",
+      "changeValue": "0.00",
+      "changePercentage": "0.0",
+      "lastTradedQuantity": "0",
+      "lowerCircuitLimit": "0.00",
+      "upperCircuitLimit": "0.00",
+      "averagePrice": "0.00",
+      "openValue": "0.0",
+      "highValue": "0.0",
+      "lowValue": "0.0",
+      "closeValue": "6278.0",
+      "totalBuyQuantity": "0",
+      "totalSellQuantity": "0",
+      "totalTradedValue": "0.00",
+      "totalTradedVolume": "0",
+      "yearlyHighPrice": "0.00",
+      "yearlyLowPrice": "0.00",
+      "tickSize": "0.5",
+      "openInterest": "0",
+      "bestBids": [
+        {
+        "number": "1",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "2",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "3",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "4",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "5",
+        "quantity": "0",
+        "price": "0.00"
+        }
+      ],
+      "bestAsks": [
+        {
+        "number": "1",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "2",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "3",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "4",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "5",
+        "quantity": "0",
+        "price": "0.00"
+        }
+      ],
+      "expiryDate": "05 Jan 21",
+      "instrument": "OPTCOM",
+      "lotQuantity": "100",
+      "listingId": "225816_MFO",
+      "openInterestChange": "0",
+      "oIChangePer": "0"
+      }
+  ```
+</details>
+</details>
+
+
+
+
+
 <a name='indexQuote'/>
 
 ## IndexQuote
