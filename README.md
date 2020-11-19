@@ -574,6 +574,7 @@ Response :
 
 <details>
   <summary>Sample Quote Request for Commodity segment</summary>
+	
 Request :  
   ```javascript
 	var quotedata = {
