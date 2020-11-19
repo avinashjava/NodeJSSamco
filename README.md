@@ -263,6 +263,7 @@ The Quote function name in NodeJS is `getQuotes()`
 symbolName,exchange
 ```
 <details>
+<details>
   <summary>Sample Quote request</summary>
   
   ```javascript
@@ -273,6 +274,7 @@ symbolName,exchange
 	sn.snapi.getQuotes("INFY20NOVFUT",quotedata).then((data) => { console.log('GetQuotes:' + data); }).catch((error) => {console.log(error)});
   ```
 </details>
+<summary>Sample Quote for Cash segment</summary>
 
 <details>
   <summary>Sample Quote Response</summary>
@@ -364,7 +366,7 @@ symbolName,exchange
 	}
   ```
 </details>
-
+</details>
 <a name='indexQuote'/>
 
 ## IndexQuote
