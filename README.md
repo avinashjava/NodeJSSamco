@@ -1450,61 +1450,56 @@ symbolName,exchange,transactionType,orderType,price,quantity,disclosedQuantity,o
 ```
 
 <details>
-  <summary>Sample PlaceOrder Request</summary>
-  
+  <summary>Sample PlaceOrder Request/Response  for Cash segment</summary>
+
+Request:
   ```javascript
 	var order = {
-		body: {
-			"symbolName": "RELIANCE",
-			"exchange": sn.constants.EXCHANGE_NSE,
-			"transactionType": sn.constants.TRANSACTION_TYPE_BUY,
-			"orderType": sn.constants.ORDER_TYPE_LIMIT,
-			"price":"1282",
-			"quantity": "15",
-			"disclosedQuantity": "",
-			"orderValidity": sn.constants.VALIDITY_DAY,
-			"productType": sn.constants.PRODUCT_MIS,
-			"afterMarketOrderFlag": "NO"
-		}
-	};
+    body: {
+        "symbolName": "TCS",
+        "exchange": sn.constants.EXCHANGE_NSE,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_LIMIT,
+        "price":"2374",
+        "quantity": "200",
+        "disclosedQuantity": "",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_CNC,
+        "afterMarketOrderFlag": "NO"
+      }
+    };
 
-	sn.snapi.placeOrder(order).then((data) => { console.log('PlaceOrder:'+ data); }).catch((error) => {console.log(error) });
+  sn.snapi.placeOrder(order).then((data) => { console.log('PlaceOrder:' + data); }).catch((error) => { console.log(error) });
+
   ```
-</details>
 
-
-<details>
-  <summary>sample PlaceOrder Response</summary>
-  
+Response:  
   ```javascript
-	{
-	  "serverTime": "16/06/20 18:03:48",
-	  "msgId": "0b9e75c7-c624-4c77-bfbf-6d4e53536948",
-	  "orderNumber": "200616000000350",
-	  "status": "Success",
-	  "statusMessage": "MIS Order request placed successfully",
-	  "exchangeOrderStatus": "PENDING",
-	  "orderDetails": {
-		"pendingQuantity": "15",
-		"avgExecutionPrice": "0.00",
-		"orderPlacedBy": "--",
-		"tradingSymbol": "RELIANCE-EQ",
-		"triggerPrice": "0.00",
-		"exchange": "NSE",
-		"totalQuantity": "15",
-		"transactionType": "BUY",
-		"productType": "MIS",
-		"orderType": "L",
-		"quantity": "15",
-		"filledQuantity": "0",
-		"orderPrice": "1282.0",
-		"filledPrice": "0.00",
-		"exchangeOrderNo": "1100000000015551",
-		"orderValidity": "DAY",
-		"orderTime": "16/06/2020 18:03:47"
-	  }
-	}
-
+	PlaceOrder:{
+      "serverTime": "20/11/20 14:43:54",
+      "msgId": "211b8163-e443-4a2f-89a2-e6c8df468de9",
+      "orderNumber": "201120000000023",
+      "status": "Success",
+      "statusMessage": "CNC Order request placed successfully",
+      "exchangeOrderStatus": "PENDING",
+      "orderDetails": {
+        "pendingQuantity": "200",
+        "avgExecutionPrice": "0.00",
+        "tradingSymbol": "TCS-EQ",
+        "triggerPrice": "0.00",
+        "exchange": "NSE",
+        "totalQuantity": "200",
+        "transactionType": "BUY",
+        "productType": "CNC",
+        "orderType": "L",
+        "quantity": "200",
+        "filledQuantity": "0",
+        "orderPrice": "2374.0",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "20/11/2020 14:43:55"
+      }
+    }
   ```
 </details>
 
