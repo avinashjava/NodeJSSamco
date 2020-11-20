@@ -2283,12 +2283,13 @@ sn.snapi.holdings().then((data) => { console.log("GetHoldings:" + data); }).catc
 The IndexIntraDayCandleData function `intradayCandleData()` gets the Intraday candle data such as Open, high, low, close and volume within specific time period.
 
 #### Parameters:
-```NodeJS
+```javascript
 symbolName,exchange,fromDate,toDate, interval
 ```
 <details>
-  <summary>Sample IntraDayCandleData Request</summary>
+  <summary>Sample IntraDayCandleData Request/Response  for Cash segment </summary>
   
+Request:
   ```javascript
 var candle = {
     "exchange": sn.constants.EXCHANGE_NSE,
@@ -2298,11 +2299,7 @@ var candle = {
 
 sn.snapi.intradayCandleData("INFY","2020-06-17 10:22:00",candle).then((data) => { console.log("intradayCandleData:" + data); }).catch((error) => { console.error(error) });
  ```
-</details>
-
-<details>
-  <summary>Sample IntraDayCandleData Response</summary>
-  
+Response:  
   ```javascript
 {
   "serverTime": "17/06/20 10:50:31",
@@ -2368,6 +2365,302 @@ sn.snapi.intradayCandleData("INFY","2020-06-17 10:22:00",candle).then((data) => 
     }
   ]
 }
+  ```
+</details>
+
+<details>
+  <summary>Sample IntraDayCandleData Request/Response  for Future & Options segment </summary>
+  
+Request:
+  ```javascript
+    var candle = {
+        "exchange": sn.constants.EXCHANGE_NFO,
+        "interval": sn.constants.INTERVAL_60MIN,
+        "toDate": "2020-11-12 08:22:00"
+    };
+
+    sn.snapi.intradayCandleData("TCS20DEC2700CE","2020-11-11 02:22:00",candle).then((data) => { console.log("intradayCandleData:" + data); }).catch((error) => { console.error(error) });
+
+ ```
+Response:  
+  ```javascript
+  intradayCandleData:{
+      "serverTime": "20/11/20 11:33:02",
+      "msgId": "54597ad9-1a04-4a66-a2a0-e537dd685675",
+      "status": "Success",
+      "statusMessage": "Intraday candle data retrieved successfully",
+      "intradayCandleData": [
+        {
+        "dateTime": "2020-11-11 10:00:00",
+        "open": "95.0",
+        "high": "98.25",
+        "low": "81.8",
+        "close": "94.85",
+        "volume": "1200"
+        },
+        {
+        "dateTime": "2020-11-11 11:00:00",
+        "open": "94.85",
+        "high": "106.15",
+        "low": "94.85",
+        "close": "106.15",
+        "volume": "300"
+        },
+        {
+        "dateTime": "2020-11-11 12:00:00",
+        "open": "106.15",
+        "high": "106.15",
+        "low": "102.0",
+        "close": "102.0",
+        "volume": "600"
+        },
+        {
+        "dateTime": "2020-11-11 13:00:00",
+        "open": "102.0",
+        "high": "102.0",
+        "low": "102.0",
+        "close": "102.0",
+        "volume": "0"
+        },
+        {
+        "dateTime": "2020-11-11 14:00:00",
+        "open": "102.0",
+        "high": "102.0",
+        "low": "88.0",
+        "close": "88.0",
+        "volume": "300"
+        },
+        {
+        "dateTime": "2020-11-11 15:00:00",
+        "open": "88.0",
+        "high": "110.0",
+        "low": "88.0",
+        "close": "110.0",
+        "volume": "600"
+        }
+      ]
+      }
+  ```
+</details>
+
+<details>
+  <summary>Sample IntraDayCandleData Request/Response  for Currency  segment </summary>
+  
+Request:
+  ```javascript
+    var candle = {
+    "exchange": sn.constants.EXCHANGE_CDS,
+    "interval": sn.constants.INTERVAL_60MIN,
+    "toDate": "2020-11-12 08:22:00"
+    };
+
+    sn.snapi.intradayCandleData("GBPINR20NOV97PE","2020-11-11 02:22:00",candle).then((data) => { console.log("intradayCandleData:" + data); }).catch((error) => { console.error(error) });
+ ```
+Response:  
+  ```javascript
+  intradayCandleData:{
+      "serverTime": "20/11/20 11:38:52",
+      "msgId": "0070df31-0037-4be4-89fa-87ca0f03ee1c",
+      "status": "Success",
+      "statusMessage": "Intraday candle data retrieved successfully",
+      "intradayCandleData": [
+        {
+        "dateTime": "2020-11-11 10:00:00",
+        "open": "0.19",
+        "high": "0.19",
+        "low": "0.19",
+        "close": "0.19",
+        "volume": "1"
+        },
+        {
+        "dateTime": "2020-11-11 11:00:00",
+        "open": "0.19",
+        "high": "0.19",
+        "low": "0.14",
+        "close": "0.14",
+        "volume": "50"
+        },
+        {
+        "dateTime": "2020-11-11 12:00:00",
+        "open": "0.14",
+        "high": "0.14",
+        "low": "0.14",
+        "close": "0.14",
+        "volume": "0"
+        },
+        {
+        "dateTime": "2020-11-11 13:00:00",
+        "open": "0.14",
+        "high": "0.1525",
+        "low": "0.1225",
+        "close": "0.1225",
+        "volume": "69"
+        },
+        {
+        "dateTime": "2020-11-11 14:00:00",
+        "open": "0.1225",
+        "high": "0.1525",
+        "low": "0.11",
+        "close": "0.11",
+        "volume": "53"
+        },
+        {
+        "dateTime": "2020-11-11 15:00:00",
+        "open": "0.11",
+        "high": "0.125",
+        "low": "0.1",
+        "close": "0.1",
+        "volume": "77"
+        },
+        {
+        "dateTime": "2020-11-11 16:00:00",
+        "open": "0.1",
+        "high": "0.165",
+        "low": "0.1",
+        "close": "0.165",
+        "volume": "26"
+        }
+      ]
+      }
+  ```
+</details>
+
+
+<details>
+  <summary>Sample IntraDayCandleData Request/Response  for Commodity segment </summary>
+  
+Request:
+  ```javascript
+   var candle = {
+      "exchange": sn.constants.EXCHANGE_MCX,
+      "interval": sn.constants.INTERVAL_60MIN,
+      "toDate": "2020-11-12 08:22:00"
+  };
+
+  sn.snapi.intradayCandleData("GOLD20NOV51000CE","2020-11-11 02:22:00",candle).then((data) => { console.log("intradayCandleData:" + data); }).catch((error) => { console.error(error) });
+ ```
+Response:  
+  ```javascript
+    intradayCandleData:{
+    "serverTime": "20/11/20 11:42:55",
+    "msgId": "749d7dcf-0136-4a9f-a20a-4fb59f1eb53b",
+    "status": "Success",
+    "statusMessage": "Intraday candle data retrieved successfully",
+    "intradayCandleData": [
+      {
+      "dateTime": "2020-11-11 10:00:00",
+      "open": "405.5",
+      "high": "405.5",
+      "low": "405.5",
+      "close": "405.5",
+      "volume": "0"
+      },
+      {
+      "dateTime": "2020-11-11 11:00:00",
+      "open": "405.5",
+      "high": "405.5",
+      "low": "390.0",
+      "close": "405.0",
+      "volume": "8"
+      },
+      {
+      "dateTime": "2020-11-11 12:00:00",
+      "open": "405.0",
+      "high": "415.0",
+      "low": "405.0",
+      "close": "415.0",
+      "volume": "3"
+      },
+      {
+      "dateTime": "2020-11-11 13:00:00",
+      "open": "415.0",
+      "high": "425.0",
+      "low": "390.0",
+      "close": "390.0",
+      "volume": "3"
+      },
+      {
+      "dateTime": "2020-11-11 14:00:00",
+      "open": "390.0",
+      "high": "405.0",
+      "low": "390.0",
+      "close": "405.0",
+      "volume": "1"
+      },
+      {
+      "dateTime": "2020-11-11 15:00:00",
+      "open": "405.0",
+      "high": "405.0",
+      "low": "360.0",
+      "close": "360.0",
+      "volume": "10"
+      },
+      {
+      "dateTime": "2020-11-11 16:00:00",
+      "open": "360.0",
+      "high": "390.0",
+      "low": "345.0",
+      "close": "345.0",
+      "volume": "7"
+      },
+      {
+      "dateTime": "2020-11-11 17:00:00",
+      "open": "345.0",
+      "high": "352.5",
+      "low": "330.0",
+      "close": "340.0",
+      "volume": "20"
+      },
+      {
+      "dateTime": "2020-11-11 18:00:00",
+      "open": "340.0",
+      "high": "377.0",
+      "low": "340.0",
+      "close": "346.0",
+      "volume": "11"
+      },
+      {
+      "dateTime": "2020-11-11 19:00:00",
+      "open": "346.0",
+      "high": "346.0",
+      "low": "320.0",
+      "close": "320.0",
+      "volume": "3"
+      },
+      {
+      "dateTime": "2020-11-11 20:00:00",
+      "open": "320.0",
+      "high": "325.0",
+      "low": "270.0",
+      "close": "302.5",
+      "volume": "36"
+      },
+      {
+      "dateTime": "2020-11-11 21:00:00",
+      "open": "302.5",
+      "high": "315.0",
+      "low": "262.5",
+      "close": "285.0",
+      "volume": "14"
+      },
+      {
+      "dateTime": "2020-11-11 22:00:00",
+      "open": "285.0",
+      "high": "296.0",
+      "low": "243.5",
+      "close": "274.0",
+      "volume": "32"
+      },
+      {
+      "dateTime": "2020-11-11 23:00:00",
+      "open": "258.0",
+      "high": "264.0",
+      "low": "248.0",
+      "close": "263.0",
+      "volume": "27"
+      }
+    ]
+    }
   ```
 </details>
 
