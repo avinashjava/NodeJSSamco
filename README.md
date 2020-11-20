@@ -1203,12 +1203,14 @@ searchSymbolName,exchange,expiryDate,strikePrice,optionType
 ```
 <details>
   <summary>Sample OptionChain Request/Response  for Future & Options segment</summary>
+
   Request:
   ```javascript
 	var options = {
     "expiryDate": "2020-12-31",
     "optionType": sn.constants.OPTION_TYPE_PE,
-    "strikePrice": "1500"
+    "strikePrice": "1500",
+    "exchange": sn.constants.EXCHANGE_NFO
 	};
 	sn.snapi.optionchain("TCS",options).then((data) => { console.log("OptionChain:" + data); }).catch((error) => { console.error(error) });
   ```
@@ -1238,6 +1240,158 @@ searchSymbolName,exchange,expiryDate,strikePrice,optionType
 	  }
 	 ]
 	}	
+  ```
+</details>
+
+<details>
+  <summary>Sample OptionChain Request/Response  for Currency segment</summary>
+  
+  Request:
+  ```javascript
+    var options = {
+        "expiryDate": "2020-12-29",
+        "strikePrice": "83",
+        "exchange": sn.constants.EXCHANGE_CDS
+    };
+    sn.snapi.optionchain("USDINR",options).then((data) => { console.log("OptionChain:" + data); }).catch((error) => { console.error(error) });
+  ```
+  Response:
+  ```javascript
+    OptionChain:{
+      "serverTime": "20/11/20 11:15:15",
+      "msgId": "55515231-8b5d-40bc-ba6f-64005d51eb44",
+      "status": "Success",
+      "statusMessage": "OptionChain details retrived successfully. ",
+      "optionChainDetails": [
+        {
+        "tradingSymbol": "USDINR20DEC83CE",
+        "exchange": "CDS",
+        "symbol": "3033_CDS",
+        "strikePrice": "83.00",
+        "expiryDate": "2020-12-29",
+        "instrument": "OPTCUR",
+        "optionType": "CE",
+        "underLyingSymbol": "USDINR",
+        "lastTradedPrice": "0.0000",
+        "openInterest": "0",
+        "openInterestChange": "0",
+        "oichangePer": "0",
+        "volume": "0"
+        },
+        {
+        "tradingSymbol": "USDINR20DEC83PE",
+        "exchange": "CDS",
+        "symbol": "3034_CDS",
+        "strikePrice": "83.00",
+        "expiryDate": "2020-12-29",
+        "instrument": "OPTCUR",
+        "optionType": "PE",
+        "underLyingSymbol": "USDINR",
+        "lastTradedPrice": "0.0000",
+        "openInterest": "0",
+        "openInterestChange": "0",
+        "oichangePer": "0",
+        "volume": "0"
+        }
+      ]
+      }	  
+  ```
+</details>
+
+
+<details>
+  <summary>Sample OptionChain Request/Response  for Commodity segment</summary>
+  
+  Request:
+  ```javascript
+	var options = {
+      "expiryDate": "2021-01-27",
+      "optionType": sn.constants.OPTION_TYPE_CE, 
+      "strikePrice": "58600",
+      "exchange": sn.constants.EXCHANGE_MCX
+  };
+  sn.snapi.optionchain("GOLD",options).then((data) => { console.log("OptionChain:" + data); }).catch((error) => { console.error(error) });
+
+  ```
+  Response:
+  ```javascript
+  OptionChain:{
+    "serverTime": "20/11/20 11:08:27",
+    "msgId": "e2421d4a-3755-4f6a-92a4-38c7aa540c4b",
+    "status": "Success",
+    "statusMessage": "OptionChain details retrived successfully. ",
+    "optionChainDetails": [
+      {
+      "tradingSymbol": "GOLD21JAN58600CE",
+      "exchange": "MCX",
+      "symbol": "223993_MFO",
+      "strikePrice": "58600.00",
+      "expiryDate": "2021-01-27",
+      "instrument": "OPTCOM",
+      "optionType": "CE",
+      "underLyingSymbol": "GOLD",
+      "lastTradedPrice": "0.00",
+      "openInterest": "0",
+      "openInterestChange": "0",
+      "oichangePer": "0",
+      "volume": "0",
+      "bestBids": [
+        {
+        "number": "1",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "2",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "3",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "4",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "5",
+        "quantity": "0",
+        "price": "0.00"
+        }
+      ],
+      "bestAsks": [
+        {
+        "number": "1",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "2",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "3",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "4",
+        "quantity": "0",
+        "price": "0.00"
+        },
+        {
+        "number": "5",
+        "quantity": "0",
+        "price": "0.00"
+        }
+      ]
+      }
+    ]
+    }	  
   ```
 </details>
 
