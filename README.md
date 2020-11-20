@@ -1038,7 +1038,6 @@ Response :
   ```
 </details>
 
-
 <details>
   <summary>Sample Quote Request/Response for Commodity segment</summary>
 	
@@ -2761,50 +2760,249 @@ The HistoricalCandleData function `historicalCandleData()` gets the historical c
 symbolName,exchange,fromDate,toDate
 ```
 <details>
-  <summary>Sample HistoricalCandleData Request</summary>
+  <summary>Sample HistoricalCandleData Request/Response  for Cash segment</summary>
+  
+Request :
+  ```javascript
+    var historycandle = {
+        "exchange": sn.constants.EXCHANGE_NSE,
+        "toDate": "2020-11-05"
+    };
+
+    sn.snapi.historicalCandleData("TCS","2020-11-01",historycandle).then((data) => { console.log("historicalCandleData:" + data); }).catch((error) => { console.error(error) });
+  ```
+Respone:
   
   ```javascript
-
-var historycandle = {
-    "exchange": sn.constants.EXCHANGE_NFO,
-    "toDate": "2020-06-17"
-};
-
-sn.snapi.historicalCandleData("BANKNIFTY18JUN2018500PE","2020-06-14",historycandle).then((data) => { console.log("historicalCandleData:" + data); }).catch((error) => { console.error(error) });
-
+    historicalCandleData:{
+      "serverTime": "20/11/20 12:04:39",
+      "msgId": "45f1f334-948b-4106-a8b0-a31798eb5966",
+      "status": "Success",
+      "statusMessage": "Historical candle data retrieved successfully",
+      "historicalCandleData": [
+        {
+        "date": "2020-11-02",
+        "open": "2660.0",
+        "high": "2664.85",
+        "low": "2600.05",
+        "close": "2604.6",
+        "ltp": "2608.0",
+        "volume": "2571196"
+        },
+        {
+        "date": "2020-11-03",
+        "open": "2604.0",
+        "high": "2665.0",
+        "low": "2601.05",
+        "close": "2633.6",
+        "ltp": "2629.0",
+        "volume": "2879269"
+        },
+        {
+        "date": "2020-11-04",
+        "open": "2610.0",
+        "high": "2721.85",
+        "low": "2610.0",
+        "close": "2653.15",
+        "ltp": "2656.0",
+        "volume": "4893928"
+        },
+        {
+        "date": "2020-11-05",
+        "open": "2685.0",
+        "high": "2710.0",
+        "low": "2667.0",
+        "close": "2685.7",
+        "ltp": "2688.0",
+        "volume": "2816502"
+        }
+      ]
+    }
   ```
 </details>
 
 <details>
-  <summary>Sample HistoricalCandleData respone</summary>
+  <summary>Sample HistoricalCandleData Request/Response  for Future & Options segment</summary>
+  
+Request :
+  ```javascript
+    var historycandle = {
+        "exchange": sn.constants.EXCHANGE_NFO,
+        "toDate": "2020-11-05"
+    };
+
+    sn.snapi.historicalCandleData("TCS20NOV3000CE","2020-11-01",historycandle).then((data) => { console.log("historicalCandleData:" + data); }).catch((error) => { console.error(error) });
+  ```
+Respone:
+  ```javascript
+    historicalCandleData:{
+      "serverTime": "20/11/20 12:16:55",
+      "msgId": "6a3743c2-3fa9-4eb0-8aea-e176d85a7cbf",
+      "status": "Success",
+      "statusMessage": "Historical candle data retrieved successfully",
+      "historicalCandleData": [
+        {
+        "date": "2020-11-02",
+        "open": "6.95",
+        "high": "7.2",
+        "low": "4.7",
+        "close": "5.3",
+        "ltp": "5.3",
+        "volume": "138000"
+        },
+        {
+        "date": "2020-11-03",
+        "open": "5.35",
+        "high": "6.8",
+        "low": "5.1",
+        "close": "5.55",
+        "ltp": "5.55",
+        "volume": "190200"
+        },
+        {
+        "date": "2020-11-04",
+        "open": "5.3",
+        "high": "10.5",
+        "low": "5.0",
+        "close": "6.75",
+        "ltp": "6.75",
+        "volume": "603900"
+        },
+        {
+        "date": "2020-11-05",
+        "open": "7.95",
+        "high": "8.0",
+        "low": "5.9",
+        "close": "6.45",
+        "ltp": "6.45",
+        "volume": "301800"
+        }
+      ]
+    }
+  ```
+</details>
+
+<details>
+  <summary>Sample HistoricalCandleData Request/Response  for Currency segment</summary>
+  
+Request :
+  ```javascript
+    var historycandle = {
+        "exchange": sn.constants.EXCHANGE_CDS,
+        "toDate": "2020-11-05"
+    };
+
+    sn.snapi.historicalCandleData("USDINR20DEC75CE","2020-11-01",historycandle).then((data) => { console.log("historicalCandleData:" + data); }).catch((error) => { console.error(error) });
+  ```
+Respone:
+  ```javascript
+    historicalCandleData:{
+    "serverTime": "20/11/20 12:19:38",
+    "msgId": "e8c08a30-289e-458e-a14b-e85f173ace0b",
+    "status": "Success",
+    "statusMessage": "Historical candle data retrieved successfully",
+    "historicalCandleData": [
+      {
+      "date": "2020-11-02",
+      "open": "0.0",
+      "high": "0.0",
+      "low": "0.0",
+      "close": "0.6575",
+      "ltp": "0.6575",
+      "volume": "0"
+      },
+      {
+      "date": "2020-11-03",
+      "open": "0.0",
+      "high": "0.0",
+      "low": "0.0",
+      "close": "0.6575",
+      "ltp": "0.6575",
+      "volume": "0"
+      },
+      {
+      "date": "2020-11-04",
+      "open": "0.0",
+      "high": "0.0",
+      "low": "0.0",
+      "close": "0.6575",
+      "ltp": "0.6575",
+      "volume": "0"
+      },
+      {
+      "date": "2020-11-05",
+      "open": "0.0",
+      "high": "0.0",
+      "low": "0.0",
+      "close": "0.725",
+      "ltp": "0.725",
+      "volume": "0"
+      }
+    ]
+  }    
+  ```
+</details>
+
+<details>
+  <summary>Sample HistoricalCandleData Request/Response  for Commodity segment</summary>
+  
+Request :
+  ```javascript
+    var historycandle = {
+        "exchange": sn.constants.EXCHANGE_MCX,
+        "toDate": "2020-11-05"
+    };
+
+    sn.snapi.historicalCandleData("SILVER20DECFUT","2020-11-01",historycandle).then((data) => { console.log("historicalCandleData:" + data); }).catch((error) => { console.error(error) });
+
+  ```
+Respone:
   
   ```javascript
-{
-  "serverTime": "17/06/20 11:14:06",
-  "msgId": "97cdca8f-81f9-4a88-8da6-99b471e82803",
-  "status": "Success",
-  "statusMessage": "Historical candle data retrieved successfully",
-  "historicalCandleData": [
-    {
-      "date": "2020-06-15",
-      "open": "60.0",
-      "high": "136.45",
-      "low": "56.2",
-      "close": "78.5",
-      "ltp": "78.5",
-      "volume": "9302660"
-    },
-    {
-      "date": "2020-06-16",
-      "open": "38.75",
-      "high": "206.85",
-      "low": "13.0",
-      "close": "38.5",
-      "ltp": "38.5",
-      "volume": "7792900"
+    historicalCandleData:{
+      "serverTime": "20/11/20 12:22:07",
+      "msgId": "c0bf5f3a-bfd8-4b81-815a-55fd3045ae45",
+      "status": "Success",
+      "statusMessage": "Historical candle data retrieved successfully",
+      "historicalCandleData": [
+        {
+        "date": "2020-11-02",
+        "open": "61422.0",
+        "high": "62272.0",
+        "low": "61330.0",
+        "close": "62007.0",
+        "ltp": "60865.0",
+        "volume": "26238"
+        },
+        {
+        "date": "2020-11-03",
+        "open": "61987.0",
+        "high": "62791.0",
+        "low": "61612.0",
+        "close": "62685.0",
+        "ltp": "62007.0",
+        "volume": "24837"
+        },
+        {
+        "date": "2020-11-04",
+        "open": "61420.0",
+        "high": "62335.0",
+        "low": "60800.0",
+        "close": "61389.0",
+        "ltp": "62685.0",
+        "volume": "38258"
+        },
+        {
+        "date": "2020-11-05",
+        "open": "62020.0",
+        "high": "64380.0",
+        "low": "61900.0",
+        "close": "64253.0",
+        "ltp": "61389.0",
+        "volume": "35098"
+        }
+      ]
     }
-  ]
-}
   ```
 </details>
 
