@@ -1510,67 +1510,65 @@ Response:
 The PlaceOrderBO function `placeOrderBO()` can be used to place an equity/derivative bracket orders to the exchange i.e the place order BO request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. So when an order is successfully placed the placeOrderBO returns an orderNumber in response, and the actual order status can be checked separately using the orderStatus API call. 
 
 #### Parameters:
-```NodeJS
+```javascript
 symbolName,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,trailingStopLoss,stopLossValue,squareOffValue,valueType,priceType,
 ```
 <details>
-  <summary>sample PlaceOrderBO Request</summary>
+  <summary>sample PlaceOrderBO Request/Response  for Cash segment</summary>
   
+Request:
   ```javascript
 	var BOorder = {
-		body: {
-			"symbolName": "TCS",
-			"exchange": sn.constants.EXCHANGE_BSE,
-			"transactionType": sn.constants.TRANSACTION_TYPE_BUY,
-			"orderType": sn.constants.ORDER_TYPE_LIMIT,
-			"quantity": "10",
-			"disclosedQuantity": "1",
-			"price": "2176.10",
-			"priceType": "LTP",
-			"valueType": "Absolute",
-			"orderValidity": sn.constants.VALIDITY_DAY,
-			"productType": sn.constants.PRODUCT_BO,
-			"squareOffValue": "15.00",
-			"stopLossValue": "5.00",
-			"trailingStopLoss": "5"
-		}
-	};
-	sn.snapi.placeOrderBO(BOorder).then((data) => { console.log('PlaceOrderBO:' + data); }).catch((error) => {console.log(error)});
+    body: {
+        "symbolName": "TCS",
+        "exchange": sn.constants.EXCHANGE_NSE,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_LIMIT,
+        "quantity": "100",
+        "disclosedQuantity": "",
+        "price": "2660.10",
+        "priceType": "LTP",
+        "valueType": "Absolute",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_BO,
+        "squareOffValue": "50.00",
+        "stopLossValue": "18.00",
+        "trailingStopLoss": "5"
+    }
+  };
+  sn.snapi.placeOrderBO(BOorder).then((data) => { console.log('PlaceOrderBO:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
 
-<details>
-  <summary>sample PlaceOrderBO Response</summary>
-  
+Response:
   ```javascript
 	PlaceOrderBO:{
-	 "serverTime": "29/10/20 15:17:51",
-	 "msgId": "16575a0b-4399-4ce6-9c68-d50c1090102c",
-	 "orderNumber": "201029000000008",
-	 "status": "Success",
-	 "exchangeOrderStatus": "PENDING",
-	 "statusMessage": "Bracket Order request placed successfully",
-	 "orderDetails": {
-	  "pendingQuantity": "10",
-	  "avgExecutionPrice": "0.00",
-	  "tradingSymbol": "TCS",
-	  "triggerPrice": "0.00",
-	  "exchange": "BSE",
-	  "totalQuantity": "10",
-	  "transactionType": "BUY",
-	  "productType": "BO",
-	  "orderType": "L",
-	  "quantity": "10",
-	  "filledQuantity": "0",
-	  "orderPrice": "2176.1",
-	  "filledPrice": "0.00",
-	  "orderValidity": "DAY",
-	  "orderTime": "29/10/2020 15:17:51"
-	 }
-	}
+    "serverTime": "20/11/20 15:51:56",
+    "msgId": "03c0c1d0-04f7-42aa-8d4b-b5ca3bfff3c5",
+    "orderNumber": "201120000000030",
+    "status": "Success",
+    "exchangeOrderStatus": "PENDING",
+    "statusMessage": "Bracket Order request placed successfully",
+    "orderDetails": {
+      "pendingQuantity": "100",
+      "avgExecutionPrice": "0.00",
+      "tradingSymbol": "TCS-EQ",
+      "triggerPrice": "0.00",
+      "exchange": "NSE",
+      "totalQuantity": "100",
+      "transactionType": "BUY",
+      "productType": "BO",
+      "orderType": "L",
+      "quantity": "100",
+      "filledQuantity": "0",
+      "orderPrice": "2660.1",
+      "filledPrice": "0.00",
+      "orderValidity": "DAY",
+      "orderTime": "20/11/2020 15:51:58"
+    }
+  }
+
   ```
 </details>
-
 
 <a name="placeOrderCO"/>
 
@@ -1583,61 +1581,55 @@ The PlaceOrderCO function `placeOrderCO()` can be used to place an equity/deriva
 symbolName,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,marketProtection,triggerPrice
 ```
 <details>
-  <summary>sample PlaceOrderCO Request</summary>
+  <summary>sample PlaceOrderCO Request/Response  for Cash segment</summary>
   
+  Request:
   ```javascript
 	var COorder = {
-		body: {
-			"symbolName": "INFY",
-			"exchange": sn.constants.EXCHANGE_NSE,
-			"transactionType": sn.constants.TRANSACTION_TYPE_BUY,
-			"orderType": sn.constants.ORDER_TYPE_LIMIT,
-			"price":"679",
-			"quantity": "15",
-			"disclosedQuantity": "",
-			"orderValidity": sn.constants.VALIDITY_DAY,
-			"productType": sn.constants.PRODUCT_CO,
-			"afterMarketOrderFlag": "No",
-			"triggerPrice": "646"
+    body: {
+        "symbolName": "TCS",
+        "exchange": sn.constants.EXCHANGE_NSE,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_MARKET,
+        "quantity": "15",
+        "disclosedQuantity": "",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_CO,
+        "afterMarketOrderFlag": "NO",
+        "triggerPrice": "2650"
 
-		}
-	};
+    }
+  };
 
-	sn.snapi.placeOrderCO(COorder).then((data) => { console.log('PlaceOrderCO:' + data); }).catch((error) => {console.log(error)});
+  sn.snapi.placeOrderCO(COorder).then((data) => { console.log('PlaceOrderCO:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
-
-<details>
-  <summary>Sample PlaceOrderCO Response</summary>
-  
+Response:  
   ```javascript
-	{
-	  "serverTime": "17/06/20 16:37:18",
-	  "msgId": "9bd0ab52-f6a0-4ec6-9813-aa707795aa87",
-	  "orderNumber": "200617000000181",
-	  "status": "Success",
-	  "statusMessage": "CO Order request placed successfully",
-	  "exchangeOrderStatus": "EXECUTED",
-	  "orderDetails": {
-		"pendingQuantity": "0",
-		"avgExecutionPrice": "679.00",
-		"orderPlacedBy": "--",
-		"tradingSymbol": "INFY-EQ",
-		"triggerPrice": "646.00",
-		"exchange": "NSE",
-		"totalQuantity": "15",
-		"transactionType": "BUY",
-		"productType": "CO",
-		"orderType": "L",
-		"quantity": "15",
-		"filledQuantity": "15",
-		"orderPrice": "679.0",
-		"filledPrice": "679.00",
-		"exchangeOrderNo": "1100000000026975",
-		"orderValidity": "DAY",
-		"orderTime": "17/06/2020 16:37:17"
-	  }
-	}
+  PlaceOrderCO:{
+    "serverTime": "20/11/20 16:17:46",
+    "msgId": "7ae6d72c-a64c-4884-976a-f8723904cd57",
+    "orderNumber": "201120000000031",
+    "status": "Success",
+    "exchangeOrderStatus": "PENDING",
+    "statusMessage": "CO Order request placed successfully",
+    "orderDetails": {
+      "pendingQuantity": "15",
+      "avgExecutionPrice": "0.00",
+      "tradingSymbol": "TCS-EQ",
+      "triggerPrice": "2650.00",
+      "exchange": "NSE",
+      "totalQuantity": "15",
+      "transactionType": "BUY",
+      "productType": "CO",
+      "orderType": "L",
+      "quantity": "15",
+      "filledQuantity": "0",
+      "orderPrice": "2745.95",
+      "filledPrice": "0.00",
+      "orderValidity": "DAY",
+      "orderTime": "20/11/2020 16:17:46"
+    }
+    }
   ```
 </details>
 
