@@ -190,71 +190,533 @@ searchSymbolName,exchange
   ```
   Response :  
   ```javascript
+  Search: {
+  "msgId": "de6c1332-3d4b-4371-a9d1-b52787c039a9",
+  "status": "Success",
+  "statusMessage": "Equity Search details retrieved successfully",
+  "searchResults": [
+    {
+      "exchange": "NSE",
+      "scripDescription": "TATA CONSULTANCY SERV LT",
+      "tradingSymbol": "TCS-EQ",
+      "isin": "INE467B01029",
+      "tickSize": "0.05",
+      "bodLotQuantity": "1"
+    },
+    {
+      "exchange": "NSE",
+      "scripDescription": "TCI DEVELOPERS LIMITED",
+      "tradingSymbol": "TCIDEVELOP-EQ",
+      "isin": "INE662L01016",
+      "tickSize": "0.05",
+      "bodLotQuantity": "1"
+    },
+    {
+      "exchange": "NSE",
+      "scripDescription": "TCI EXPRESS LIMITED",
+      "tradingSymbol": "TCIEXP-EQ",
+      "isin": "INE586V01016",
+      "tickSize": "0.05",
+      "bodLotQuantity": "1"
+    },
+    {
+      "exchange": "NSE",
+      "scripDescription": "TCI FINANCE LTD",
+      "tradingSymbol": "TCIFINANCE-EQ",
+      "isin": "INE911B01018",
+      "tickSize": "0.05",
+      "bodLotQuantity": "1"
+    },
+    {
+      "exchange": "NSE",
+      "scripDescription": "TCNS CLOTHING CO. LIMITED",
+      "tradingSymbol": "TCNSBRANDS-EQ",
+      "isin": "INE778U01029",
+      "tickSize": "0.05",
+      "bodLotQuantity": "1"
+    },
+    {
+      "exchange": "NSE",
+      "scripDescription": "TCPL PACKAGING LIMITED",
+      "tradingSymbol": "TCPLPACK-EQ",
+      "isin": "INE822C01015",
+      "tickSize": "0.05",
+      "bodLotQuantity": "1"
+    },
+    {
+      "exchange": "NSE",
+      "scripDescription": "TRANSPORT CORPN OF INDIA",
+      "tradingSymbol": "TCI-EQ",
+      "isin": "INE688A01022",
+      "tickSize": "0.05",
+      "bodLotQuantity": "1"
+    }
+  ]
+}
+  ```
+</details>
+
+<details>
+  <summary>Sample Search Request/Response  for Future & Options segment</summary>
+  
+  Request :
+  ```javascript
+  var search={
+    "exchange": sn.constants.EXCHANGE_NFO,
+  }
+  sn.snapi.search("BANKNIFTY",search).then((data) => { console.log('Search:' + data); }).catch((error) => {console.log(error)});
+
+  ```
+  Response :  
+  ```javascript
+  Search: {
+  "msgId": "dd84e6ba-29d1-4eb8-a021-c9b896eed795",
+  "status": "Success",
+  "statusMessage": "Equity Search details retrieved successfully",
+  "searchResults": [
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOVFUT",
+      "instrument": "FUTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2029000CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2030000CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2028500CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2028000PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2029500CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2027000PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2027500PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2030500CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2028500PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV30000CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV28000PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV29000CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2031000CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2026000PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV27000PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2026500PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV30500CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2031500CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV29500CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    }
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY31DEC2024500CE",
+      "instrument": "OPTIDX"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV25900CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2022000CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2026700CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY19NOV2026400CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV22700PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV29300PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV22800PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY31DEC2028300PE",
+      "instrument": "OPTIDX"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY31DEC2028300CE",
+      "instrument": "OPTIDX"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY31DEC2026800CE",
+      "instrument": "OPTIDX"
+    },
+    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY20NOV21000CE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },    {
+      "exchange": "NFO",
+      "tradingSymbol": "BANKNIFTY21JUN19000PE",
+      "instrument": "OPTIDX",
+      "bodLotQuantity": "25"
+    },
+
+  ]
+}
+  ```
+</details>
+
+
+<details>
+  <summary>Sample Search Request/Response  for Currency segment</summary>
+  
+  Request :
+  ```javascript
+  var search={
+    "exchange": sn.constants.EXCHANGE_CDS,
+  }
+  sn.snapi.search("USDINR20DEC",search).then((data) => { console.log('Search:' + data); }).catch((error) => {console.log(error)});
+  ```
+  Response :  
+  ```javascript
   Search:{
- "msgId": "de6c1332-3d4b-4371-a9d1-b52787c039a9",
+ "msgId": "14de6691-8493-464d-99c1-8eabb5a9d4e9",
  "status": "Success",
  "statusMessage": "Equity Search details retrieved successfully",
  "searchResults": [
   {
-   "exchange": "NSE",
-   "scripDescription": "TATA CONSULTANCY SERV LT",
-   "tradingSymbol": "TCS-EQ",
-   "isin": "INE467B01029",
-   "tickSize": "0.05",
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC75PE",
+   "instrument": "OPTCUR",
    "bodLotQuantity": "1"
   },
   {
-   "exchange": "NSE",
-   "scripDescription": "TCI DEVELOPERS LIMITED",
-   "tradingSymbol": "TCIDEVELOP-EQ",
-   "isin": "INE662L01016",
-   "tickSize": "0.05",
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC75.5CE",
+   "instrument": "OPTCUR",
    "bodLotQuantity": "1"
   },
   {
-   "exchange": "NSE",
-   "scripDescription": "TCI EXPRESS LIMITED",
-   "tradingSymbol": "TCIEXP-EQ",
-   "isin": "INE586V01016",
-   "tickSize": "0.05",
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC76CE",
+   "instrument": "OPTCUR",
    "bodLotQuantity": "1"
   },
   {
-   "exchange": "NSE",
-   "scripDescription": "TCI FINANCE LTD",
-   "tradingSymbol": "TCIFINANCE-EQ",
-   "isin": "INE911B01018",
-   "tickSize": "0.05",
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC74.5PE",
+   "instrument": "OPTCUR",
    "bodLotQuantity": "1"
   },
   {
-   "exchange": "NSE",
-   "scripDescription": "TCNS CLOTHING CO. LIMITED",
-   "tradingSymbol": "TCNSBRANDS-EQ",
-   "isin": "INE778U01029",
-   "tickSize": "0.05",
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC74.5CE",
+   "instrument": "OPTCUR",
    "bodLotQuantity": "1"
   },
   {
-   "exchange": "NSE",
-   "scripDescription": "TCPL PACKAGING LIMITED",
-   "tradingSymbol": "TCPLPACK-EQ",
-   "isin": "INE822C01015",
-   "tickSize": "0.05",
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC74PE",
+   "instrument": "OPTCUR",
    "bodLotQuantity": "1"
   },
   {
-   "exchange": "NSE",
-   "scripDescription": "TRANSPORT CORPN OF INDIA",
-   "tradingSymbol": "TCI-EQ",
-   "isin": "INE688A01022",
-   "tickSize": "0.05",
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC76PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC72CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC73.5PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC74CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC73PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC76.5CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC73CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC73.5CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC73.75PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC75.5PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC77CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC72.5PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC72.5CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC72PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC70.75PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC72.5CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC74.25PE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DEC78.5CE",
+   "instrument": "OPTCUR",
+   "bodLotQuantity": "1"
+  },
+  {
+   "exchange": "CDS",
+   "tradingSymbol": "USDINR20DECFUT",
+   "instrument": "FUTCUR",
    "bodLotQuantity": "1"
   }
  ]
 }
   ```
 </details>
+
+<details>
+  <summary>Sample Search Request/Response  for Commodity segment</summary>
+  
+  Request :
+  ```javascript
+  var search={
+    "exchange": sn.constants.EXCHANGE_MCX,
+  }
+  sn.snapi.search("SILVER20NOV68",search).then((data) => { console.log('Search:' + data); }).catch((error) => {console.log(error)});
+  ```
+  Response :  
+  ```javascript
+  Search:{
+ "msgId": "44e00c5e-362a-48ad-a07b-6da0d9ab2c2a",
+ "status": "Success",
+ "statusMessage": "Equity Search details retrieved successfully",
+ "searchResults": [
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68000CE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "9"
+  },
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68250CE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "0"
+  },
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68250PE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "0"
+  },
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68500CE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "0"
+  },
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68500PE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "0"
+  },
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68750CE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "0"
+  },
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68750PE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "0"
+  },
+  {
+   "exchange": "MFO",
+   "tradingSymbol": "SILVER20NOV68000PE",
+   "instrument": "OPTFUT",
+   "quantityInLots": "0"
+  }
+ ]
+}
+
+  ```
+</details>
+
 
 <a name="quote"/>
 
@@ -268,7 +730,7 @@ The Quote function name in NodeJS is `getQuotes()`
 symbolName,exchange
 ```
 <details>
-  <summary>Sample Quote Request  for Cash segment</summary>
+  <summary>Sample Quote Request/Response  for Cash segment</summary>
 
 Request:  
   ```javascript
@@ -370,7 +832,7 @@ Request:
 </details>
 
 <details>
-  <summary>Sample Quote Request for Future & Options segment</summary>
+  <summary>Sample Quote Request/Response for Future & Options segment</summary>
 
 Request:  
   ```javascript
@@ -471,7 +933,7 @@ Response:
 </details>
 
 <details>
-  <summary>Sample Quote Request for Currency segment</summary>
+  <summary>Sample Quote Request/Response for Currency segment</summary>
 
 Request :  
   ```javascript
@@ -578,7 +1040,7 @@ Response :
 
 
 <details>
-  <summary>Sample Quote Request for Commodity segment</summary>
+  <summary>Sample Quote Request/Response for Commodity segment</summary>
 	
 Request :  
   ```javascript
