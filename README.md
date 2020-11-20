@@ -1640,53 +1640,51 @@ Response:
 The ModifyOrder function `modifyOrders()` can be used to modify some attributes of an order as long as it is with open/pending status in system. For modification order identifier is mandatory. With order identifier you need to send the optional parameter(s) which needs to be modified. In case the optional parameters aren't sent, the default will be considered from the original order. Modifiable attributes include quantity, Order Type (L,MKT, SL,SL-M). This API cannot be used for modifying attributes of an executed/rejected/cancelled order. Only the attribute that needs to be modified should be sent in the request alongwith the Order Identifier.
 
 #### Parameters:
-```NodeJS
+```javascript
 orderType,quantity,disclosedQuantity,orderValidity,price,triggerPrice,orderNumber,marketProtection
 ```
 <details>
-  <summary> Sample ModifyOrder Request</summary>
+  <summary> Sample ModifyOrder Request/Response  for Cash segment</summary>
   
+Request:
   ```javascript
 	var modify = {
-		body: {
-			"quantity": "15",
-		}
-	};
-	sn.snapi.modifyOrders("201029000000008",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
+    body: {
+        "quantity": "150",
 
+        }
+    };
+    sn.snapi.modifyOrders("201120000000030",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
   ```
-</details>
-
-<details>
-  <summary>Sample ModifyOrder Response</summary>
+Response :
   
   ```javascript
 	ModifyOrder:{
-	 "serverTime": "29/10/20 16:39:48",
-	 "msgId": "e9d99a47-5224-42d4-b3f9-cba455d1df57",
-	 "orderNumber": "201029000000008",
-	 "status": "Success",
-	 "statusMessage": "Order 201029000000008 modified successfully",
-	 "exchangeOrderStatus": "PENDING",
-	 "orderDetails": {
-	  "pendingQuantity": "15",
-	  "avgExecutionPrice": "0.00",
-	  "tradingSymbol": "TCS",
-	  "triggerPrice": "0.00",
-	  "exchange": "BSE",
-	  "totalQuantity": "15",
-	  "transactionType": "BUY",
-	  "productType": "BO",
-	  "orderType": "L",
-	  "quantity": "15",
-	  "filledQuantity": "0",
-	  "orderPrice": "2176.1",
-	  "filledPrice": "0.00",
-	  "exchangeOrderNo": "1603947830033000087",
-	  "orderValidity": "DAY",
-	  "orderTime": "29/10/2020 16:39:48"
-	 }
-	}
+      "serverTime": "20/11/20 17:38:56",
+      "msgId": "b066db36-9661-44e7-aa43-b193a6c90fa3",
+      "orderNumber": "201120000000030",
+      "status": "Success",
+      "statusMessage": "Order 201120000000030 modified successfully",
+      "exchangeOrderStatus": "PENDING",
+      "orderDetails": {
+        "pendingQuantity": "78",
+        "avgExecutionPrice": "2660.10",
+        "tradingSymbol": "TCS-EQ",
+        "triggerPrice": "0.00",
+        "exchange": "NSE",
+        "totalQuantity": "100",
+        "transactionType": "BUY",
+        "productType": "BO",
+        "orderType": "L",
+        "quantity": "100",
+        "filledQuantity": "22",
+        "orderPrice": "2660.1",
+        "filledPrice": "2660.10",
+        "exchangeOrderNo": "1100000000041268",
+        "orderValidity": "DAY",
+        "orderTime": "20/11/2020 17:38:57"
+      }
+    }
   ```
 </details>
 
@@ -2133,10 +2131,11 @@ The PositionSquareoff function `positonSquareoff()` helps the user to SqareOff e
 symbolName,exchange,transactionType,productType,netQuantity
 ```
 <details>
-  <summary>Sample PositionSquareoff Request</summary>
+  <summary>Sample PositionSquareoff Request/Response  for Cash segment</summary>
   
+  Request :
   ```javascript
-var squareOff = {
+  var squareOff = {
     body: { 
         "positionSquareOffRequestList": [
         {
@@ -2148,14 +2147,12 @@ var squareOff = {
         }    
        ]
     }
-};
+  };
 
 sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
   ```
-</details>
 
-<details>
-  <summary>Sample PositionSquareoff Response</summary>
+  Response :
   
   ```javascript
 {
@@ -2170,6 +2167,123 @@ sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquare
 }
   ```
 </details>
+
+
+<details>
+  <summary>Sample PositionSquareoff Request/Response for Future & Options segment</summary>
+  
+  Request :
+  ```javascript
+  var squareOff = {
+    body: { 
+        "positionSquareOffRequestList": [
+        {
+            "exchange":sn.constants.EXCHANGE_NFO,
+            "symbolName":"INFY20NOVFUT",
+            "productType":sn.constants.PRODUCT_MIS,
+            "netQuantity":"10",
+            "transactionType":sn.constants.TRANSACTION_TYPE_BUY
+        }    
+       ]
+    }
+  };
+
+sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
+  ```
+  Response :
+  
+  ```javascript
+{
+  "serverTime": "25/11/20 20:04:30",
+  "msgId": "fcb519b8-dd74-422a-8a65-1dcsda0caedb7",
+  "positionSquareOffResponseList": [
+    {
+      "status": "Success",
+      "statusMessage": "Position square off successful -INFY20NOVFUT NetQty:10"
+    }
+  ]
+}
+  ```
+</details>
+
+
+
+<details>
+  <summary>Sample PositionSquareoff Request/Response for Currency segment</summary>
+  
+  Request :
+  ```javascript
+  var squareOff = {
+    body: { 
+        "positionSquareOffRequestList": [
+        {
+            "exchange":sn.constants.EXCHANGE_CDS,
+            "symbolName":"USDINR20DEC75PE",
+            "productType":sn.constants.PRODUCT_MIS,
+            "netQuantity":"10",
+            "transactionType":sn.constants.TRANSACTION_TYPE_BUY
+        }    
+       ]
+    }
+  };
+
+sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
+  ```
+  Response :
+  
+  ```javascript
+{
+  "serverTime": "25/11/20 20:04:30",
+  "msgId": "fcb519b8-dd74-422a-8a65-1dcsda0caedb7",
+  "positionSquareOffResponseList": [
+    {
+      "status": "Success",
+      "statusMessage": "Position square off successful -USDINR20DEC75PE NetQty:10"
+    }
+  ]
+}
+  ```
+</details>
+
+<details>
+  <summary>Sample PositionSquareoff Request/Response for Commodity segment</summary>
+  
+  Request :
+  ```javascript
+  var squareOff = {
+    body: { 
+        "positionSquareOffRequestList": [
+        {
+            "exchange":sn.constants.EXCHANGE_MCX,
+            "symbolName":"GOLDM21JANFUT",
+            "productType":sn.constants.PRODUCT_MIS,
+            "netQuantity":"10",
+            "transactionType":sn.constants.TRANSACTION_TYPE_BUY
+        }    
+       ]
+    }
+  };
+
+sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
+  ```
+  Response :
+  
+  ```javascript
+{
+  "serverTime": "25/11/20 20:04:30",
+  "msgId": "fcb519b8-dd74-422a-8a65-1dcsda0caedb7",
+  "positionSquareOffResponseList": [
+    {
+      "status": "Success",
+      "statusMessage": "Position square off successful -GOLDM21JANFUT NetQty:10"
+    }
+  ]
+}
+  ```
+</details>
+
+
+
 
 <a name="holdings"/>
 
