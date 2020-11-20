@@ -1202,8 +1202,8 @@ The OptionChain function `optionchain()` can be used to search OptionChain for e
 searchSymbolName,exchange,expiryDate,strikePrice,optionType
 ```
 <details>
-  <summary>Sample OptionChain Request</summary>
-  
+  <summary>Sample OptionChain Request/Response  for Future & Options segment</summary>
+  Request:
   ```javascript
 	var options = {
     "expiryDate": "2020-12-31",
@@ -1212,11 +1212,7 @@ searchSymbolName,exchange,expiryDate,strikePrice,optionType
 	};
 	sn.snapi.optionchain("TCS",options).then((data) => { console.log("OptionChain:" + data); }).catch((error) => { console.error(error) });
   ```
-</details>
-
-<details>
-  <summary>Sample OptionChain Response</summary>
-  
+  Response:
   ```javascript
 	OptionChain:{
 	 "serverTime": "29/10/20 13:53:32",
