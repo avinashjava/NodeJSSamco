@@ -1445,7 +1445,7 @@ The PlaceOrder function `placeOrder()` can be used to place an equity/derivative
 
 
 #### Parameters:
-```NodeJS
+```javascript
 symbolName,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,marketProtection
 ```
 
@@ -1502,7 +1502,6 @@ Response:
     }
   ```
 </details>
-
 
 <details>
   <summary>Sample PlaceOrder Request/Response  for Future & Options segment</summary>
@@ -1582,7 +1581,7 @@ Request:
 
 Response:  
   ```javascript
-	{
+	PlaceOrder:{
     "serverTime": "23/11/20 14:25:15",
     "msgId": "bfe30991-22a1-4814-9b36-c654cf96c21a",
     "orderNumber": "201123000134794",
@@ -2154,7 +2153,6 @@ Request:
 	var modify = {
     body: {
         "quantity": "150",
-
         }
     };
     sn.snapi.modifyOrders("201120000000030",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
@@ -2190,6 +2188,143 @@ Response :
     }
   ```
 </details>
+
+
+<details>
+  <summary>Sample ModifyOrder Request/Response  for Future & Options segment</summary>
+
+Request:
+  ```javascript
+	var modify = {
+    body: {
+        "quantity": "150",
+        }
+    };
+    sn.snapi.modifyOrders("201123000152416",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
+  ```
+
+Response:  
+  ```javascript
+ModifyOrder:	{
+    "serverTime": "23/11/20 15:24:11",
+    "msgId": "28837fc5-23e3-4a39-9da8-9d0ffdd36f31",
+    "orderNumber": "201123000152416",
+    "status": "Success",
+    "statusMessage": "Order 201123000152416 modified successfully",
+    "exchangeOrderStatus": "PENDING",
+    "orderDetails": {
+        "pendingQuantity": "150",
+        "avgExecutionPrice": "0.00",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "BANKNIFTY20NOVFUT",
+        "triggerPrice": "0.00",
+        "exchange": "NFO",
+        "totalQuantity": "150",
+        "transactionType": "BUY",
+        "productType": "MIS",
+        "orderType": "L",
+        "quantity": "150",
+        "filledQuantity": "0",
+        "orderPrice": "29891.05",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 15:24:11"
+    }
+}
+  ```
+</details>
+
+
+<details>
+  <summary>Sample ModifyOrder Request/Response  for Currency segment</summary>
+
+Request:
+  ```javascript
+	var modify = {
+    body: {
+        "quantity": "15",
+        }
+    };
+    sn.snapi.modifyOrders("201123000134794",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
+  ```
+
+Response:  
+  ```javascript
+	ModifyOrder:{
+    "serverTime": "23/11/20 14:25:15",
+    "msgId": "bfe30991-22a1-4814-9b36-c654cf96c21a",
+    "orderNumber": "201123000134794",
+    "status": "Success",
+    "statusMessage": Order 201123000152416 modified successfully",
+    "exchangeOrderStatus": "PENDING",
+    "orderDetails": {
+        "pendingQuantity": "25",
+        "avgExecutionPrice": "0.0000",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "USDINR20NOVFUT",
+        "triggerPrice": "72.0000",
+        "exchange": "CDS",
+        "totalQuantity": "10",
+        "transactionType": "BUY",
+        "productType": "MIS",
+        "orderType": "L",
+        "quantity": "25",
+        "filledQuantity": "0",
+        "orderPrice": "76.3325",
+        "filledPrice": "0.0000",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 14:25:19"
+    }
+}
+  ```
+</details>
+
+
+<details>
+  <summary>Sample ModifyOrder Request/Response  for Commodity segment</summary>
+
+Request:
+  ```javascript
+		var modify = {
+    body: {
+        "quantity": "15",
+        }
+    };
+    sn.snapi.modifyOrders("201123000000008",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
+
+  ```
+
+Response:  
+  ```javascript
+  ModifyOrder:{
+      "serverTime": "23/11/20 12:51:39",
+      "msgId": "b7d6acfe-a147-4421-8fd4-60551a8f3c72",
+      "orderNumber": "201123000000008",
+      "status": "Success",
+      "statusMessage": "Order 201123000000008 modified successfully",
+      "exchangeOrderStatus": "PENDING",
+      "orderDetails": {
+        "pendingQuantity": "20",
+        "avgExecutionPrice": "0.00",
+        "tradingSymbol": "GOLDPETAL20NOVFUT",
+        "triggerPrice": "0.00",
+        "exchange": "MCX",
+        "totalQuantity": "20",
+        "transactionType": "BUY",
+        "productType": "NRML",
+        "orderType": "L",
+        "quantity": "20",
+        "filledQuantity": "0",
+        "orderPrice": "5027.0",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 12:51:39"
+      }
+    }
+  ```
+</details>
+
+
 
 <a name="orderBook"/>
 
