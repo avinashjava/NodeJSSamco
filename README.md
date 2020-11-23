@@ -2152,7 +2152,7 @@ Request:
   ```javascript
 	var modify = {
     body: {
-        "quantity": "150",
+        "quantity": "20",
         }
     };
     sn.snapi.modifyOrders("201120000000030",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
@@ -2197,7 +2197,7 @@ Request:
   ```javascript
 	var modify = {
     body: {
-        "quantity": "150",
+        "quantity": "50",
         }
     };
     sn.snapi.modifyOrders("201123000152416",modify).then((data) => { console.log('ModifyOrder:' + data); }).catch((error) => {console.log(error)});
@@ -2258,13 +2258,13 @@ Response:
     "statusMessage": Order 201123000152416 modified successfully",
     "exchangeOrderStatus": "PENDING",
     "orderDetails": {
-        "pendingQuantity": "25",
+        "pendingQuantity": "15",
         "avgExecutionPrice": "0.0000",
         "orderPlacedBy": "--",
         "tradingSymbol": "USDINR20NOVFUT",
         "triggerPrice": "72.0000",
         "exchange": "CDS",
-        "totalQuantity": "10",
+        "totalQuantity": "25",
         "transactionType": "BUY",
         "productType": "MIS",
         "orderType": "L",
@@ -2724,8 +2724,9 @@ symbolName,exchange,transactionType,positionType,quantityToConvert,fromProductTy
 ```
 
 <details>
-  <summary>Sample PositionConverstion Request</summary>
+  <summary>Sample PositionConverstion Request/Response  for Cash segment</summary>
   
+Request :
   ```javascript
 var conversion = {
     body: {
@@ -2742,21 +2743,136 @@ var conversion = {
 
 sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
   ```
-</details>
-
-<details>
-  <summary>Sample PostionConverstion Response</summary>
-  
+  Response:
   ```javascript
 
   {
-  "serverTime" : "17x/06/20 15:06:42",
+  "serverTime" : "23/11/20 15:06:42",
   "msgId" : "ba32c75f-ee4b-4af6-a580-f17ad36fefd4",
   "status" : "Success",
   "statusMsg" : "Position Conversion from MIS to CNC successful"
 }
   ```
 </details>
+
+<details>
+  <summary>Sample PositionConverstion Request/Response for Future & Options segment</summary>
+  
+Request :
+  ```javascript
+var conversion = {
+    body: {
+        "symbolName": "BANKNIFTY20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_NFO,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "positionType": sn.constants.VALIDITY_DAY,
+        "quantityToConvert": "10",
+        "fromProductType": sn.constants.PRODUCT_NRML,
+        "toProductType": sn.constants.PRODUCT_MIS,
+        "netQuantity": "60"
+    }
+};
+
+sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
+  ```
+
+Response :  
+  ```javascript
+
+  {
+  "serverTime" : "23/11/20 15:06:42",
+  "msgId" : "ba23c75f-ee4b-4af6-a850-f17ad36fefd4",
+  "status" : "Success",
+  "statusMsg" : "Position Conversion from NRML to MIS successful"
+}
+  ```
+</details>
+
+<details>
+  <summary>Sample PositionConverstion Request/Response for Currency segment</summary>
+  
+Request :
+  ```javascript
+var conversion = {
+    body: {
+        "symbolName": "USDINR20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_CDS,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "positionType": sn.constants.VALIDITY_DAY,
+        "quantityToConvert": "10",
+        "fromProductType": sn.constants.PRODUCT_NRML,
+        "toProductType": sn.constants.PRODUCT_MIS,
+        "netQuantity": "50"
+    }
+};
+
+sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
+  ```
+
+Response :  
+  ```javascript
+
+  {
+  "serverTime" : "23/11/20 15:06:42",
+  "msgId" : "ba23c75f-ee4b-4af6-a850-f17ad36fefd4",
+  "status" : "Success",
+  "statusMsg" : "Position Conversion from NRML to MIS successful"
+}
+  ```
+</details>
+
+
+<details>
+  <summary>Sample PositionConverstion Request/Response for Commodity segment</summary>
+  
+Request :
+  ```javascript
+var conversion = {
+    body: {
+        "symbolName": "GOLDPETAL20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_MCX,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "positionType": sn.constants.VALIDITY_DAY,
+        "quantityToConvert": "50",
+        "fromProductType": sn.constants.PRODUCT_NRML,
+        "toProductType": sn.constants.PRODUCT_MIS,
+        "netQuantity": "150"
+    }
+};
+
+sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
+  ```
+
+Response :  
+  ```javascript
+
+  {
+  "serverTime" : "23/11/20 15:06:42",
+  "msgId" : "ba23c75f-ee4b-4af6-a850-f17ad36fefd4",
+  "status" : "Success",
+  "statusMsg" : "Position Conversion from NRML to MIS successful"
+}
+  ```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <a name="positionSquareOff"/>
 
@@ -2843,8 +2959,6 @@ sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquare
 }
   ```
 </details>
-
-
 
 <details>
   <summary>Sample PositionSquareoff Request/Response for Currency segment</summary>
