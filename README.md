@@ -1541,26 +1541,49 @@ Request:
   ```javascript
 	var order = {
     body: {
-        "symbolName": "TCS",
-        "exchange": sn.constants.EXCHANGE_NSE,
+        "symbolName": "USDINR20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_CDS,
         "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
-        "orderType": sn.constants.ORDER_TYPE_LIMIT,
-        "price":"2374",
-        "quantity": "200",
+        "orderType": sn.constants.ORDER_TYPE_MARKET,
+        "quantity": "10",
         "disclosedQuantity": "",
         "orderValidity": sn.constants.VALIDITY_DAY,
-        "productType": sn.constants.PRODUCT_CNC,
+        "productType": sn.constants.PRODUCT_MIS,
         "afterMarketOrderFlag": "NO"
       }
     };
 
   sn.snapi.placeOrder(order).then((data) => { console.log('PlaceOrder:' + data); }).catch((error) => { console.log(error) });
-
   ```
 
 Response:  
   ```javascript
-	
+	{
+    "serverTime": "23/11/20 14:25:15",
+    "msgId": "bfe30991-22a1-4814-9b36-c654cf96c21a",
+    "orderNumber": "201123000134794",
+    "status": "Success",
+    "statusMessage": "MIS Order request placed successfully",
+    "exchangeOrderStatus": "PENDING",
+    "orderDetails": {
+        "pendingQuantity": "10",
+        "avgExecutionPrice": "0.0000",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "USDINR20NOVFUT",
+        "triggerPrice": "72.0000",
+        "exchange": "CDS",
+        "totalQuantity": "10",
+        "transactionType": "BUY",
+        "productType": "MIS",
+        "orderType": "L",
+        "quantity": "10",
+        "filledQuantity": "0",
+        "orderPrice": "76.3325",
+        "filledPrice": "0.0000",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 14:25:19"
+    }
+}
   ```
 </details>
 
@@ -1706,12 +1729,57 @@ Response:
 
 Request:
   ```javascript
+  var BOorder = {
+    body: {
+        "symbolName": "USDINR20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_CDS,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_LIMIT,
+        "quantity": "10",
+        "disclosedQuantity": "",
+        "price": "74.11",
+        "priceType": "LTP",
+        "valueType": "Absolute",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_BO,
+        "squareOffValue": "10.00",
+        "stopLossValue": "5.00",
+        "trailingStopLoss": "5"
+    }
+};
+sn.snapi.placeOrderBO(BOorder).then((data) => { console.log('PlaceOrderBO:' + data); }).catch((error) => {console.log(error)});
+
 
   ```
 
 Response:  
   ```javascript
-  
+  PlaceOrderBO{
+    "serverTime": "23/11/20 14:33:58",
+    "msgId": "e704b5b8-9f93-42c2-b27e-bb347ad6cb45",
+    "orderNumber": "201123000137902",
+    "status": "Success",
+    "statusMessage": "Bracket Order request placed successfully",
+    "exchangeOrderStatus": "PENDING",
+    "orderDetails": {
+        "pendingQuantity": "1",
+        "avgExecutionPrice": "0.0000",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "USDINR20NOVFUT",
+        "triggerPrice": "0.0000",
+        "exchange": "CDS",
+        "totalQuantity": "1",
+        "transactionType": "BUY",
+        "productType": "BO",
+        "orderType": "L",
+        "quantity": "1",
+        "filledQuantity": "0",
+        "orderPrice": "74.11",
+        "filledPrice": "0.0000",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 14:33:58"
+    }
+}
   ```
 </details>
 
@@ -1835,6 +1903,112 @@ Response:
   ```
 </details>
 
+<details>
+  <summary>sample PlaceOrderCO Request/Response  for Future & Options segment</summary>
+  
+Request:
+  ```javascript
+	var COorder = {
+    body: {
+        "symbolName": "TCS",
+        "exchange": sn.constants.EXCHANGE_NSE,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_MARKET,
+        "quantity": "15",
+        "disclosedQuantity": "",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_CO,
+        "afterMarketOrderFlag": "NO",
+        "triggerPrice": "2650"
+
+    }
+  };
+
+  sn.snapi.placeOrderCO(COorder).then((data) => { console.log('PlaceOrderCO:' + data); }).catch((error) => {console.log(error)});
+  ```
+Response:  
+  ```javascript
+  PlaceOrderCO:{
+    "serverTime": "20/11/20 16:17:46",
+    "msgId": "7ae6d72c-a64c-4884-976a-f8723904cd57",
+    "orderNumber": "201120000000031",
+    "status": "Success",
+    "exchangeOrderStatus": "PENDING",
+    "statusMessage": "CO Order request placed successfully",
+    "orderDetails": {
+      "pendingQuantity": "15",
+      "avgExecutionPrice": "0.00",
+      "tradingSymbol": "TCS-EQ",
+      "triggerPrice": "2650.00",
+      "exchange": "NSE",
+      "totalQuantity": "15",
+      "transactionType": "BUY",
+      "productType": "CO",
+      "orderType": "L",
+      "quantity": "15",
+      "filledQuantity": "0",
+      "orderPrice": "2745.95",
+      "filledPrice": "0.00",
+      "orderValidity": "DAY",
+      "orderTime": "20/11/2020 16:17:46"
+    }
+    }
+  ```
+</details>
+
+<details>
+  <summary>Sample PlaceOrderCO Request/Response  for Currency segment</summary>
+
+Request:
+  ```javascript
+  var COorder = {
+    body: {
+        "symbolName": "USDINR20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_CDS,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_MARKET,
+        "quantity": "10",
+        "disclosedQuantity": "",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_CO,
+        "afterMarketOrderFlag": "NO",
+        "triggerPrice": "74"
+
+    }
+};
+
+sn.snapi.placeOrderCO(COorder).then((data) => { console.log('PlaceOrder:' + data); }).catch((error) => {console.log(error)});
+  ```
+Response:  
+  ```javascript
+  {
+    "serverTime": "23/11/20 14:28:57",
+    "msgId": "c4195075-4d9a-4a32-9384-890b6e7525c4",
+    "orderNumber": "201123000136146",
+    "status": "Success",
+    "statusMessage": "CO Order request placed successfully",
+    "exchangeOrderStatus": "PENDING",
+    "orderDetails": {
+        "pendingQuantity": "10",
+        "avgExecutionPrice": "0.0000",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "USDINR20NOVFUT",
+        "triggerPrice": "74.0000",
+        "exchange": "CDS",
+        "totalQuantity": "10",
+        "transactionType": "BUY",
+        "productType": "CO",
+        "orderType": "L",
+        "quantity": "10",
+        "filledQuantity": "0",
+        "orderPrice": "76.3275",
+        "filledPrice": "0.0000",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 14:29:01"
+    }
+}
+  ```
+</details>
 
 <details>
   <summary>Sample PlaceOrderCO Request/Response  for Commodity segment</summary>
