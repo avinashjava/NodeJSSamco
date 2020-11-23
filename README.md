@@ -1503,6 +1503,122 @@ Response:
   ```
 </details>
 
+
+<details>
+  <summary>Sample PlaceOrder Request/Response  for Future & Options segment</summary>
+
+Request:
+  ```javascript
+	var order = {
+    body: {
+        "symbolName": "TCS",
+        "exchange": sn.constants.EXCHANGE_NSE,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_LIMIT,
+        "price":"2374",
+        "quantity": "200",
+        "disclosedQuantity": "",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_CNC,
+        "afterMarketOrderFlag": "NO"
+      }
+    };
+
+  sn.snapi.placeOrder(order).then((data) => { console.log('PlaceOrder:' + data); }).catch((error) => { console.log(error) });
+
+  ```
+
+Response:  
+  ```javascript
+	
+  ```
+</details>
+
+<details>
+  <summary>Sample PlaceOrder Request/Response  for Currency segment</summary>
+
+Request:
+  ```javascript
+	var order = {
+    body: {
+        "symbolName": "TCS",
+        "exchange": sn.constants.EXCHANGE_NSE,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_LIMIT,
+        "price":"2374",
+        "quantity": "200",
+        "disclosedQuantity": "",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_CNC,
+        "afterMarketOrderFlag": "NO"
+      }
+    };
+
+  sn.snapi.placeOrder(order).then((data) => { console.log('PlaceOrder:' + data); }).catch((error) => { console.log(error) });
+
+  ```
+
+Response:  
+  ```javascript
+	
+  ```
+</details>
+
+
+<details>
+  <summary>Sample PlaceOrder Request/Response  for Commodity segment</summary>
+
+Request:
+  ```javascript
+	varorder={
+    body: {
+      "symbolName": "GOLDPETAL20NOVFUT",
+      "exchange": sn.constants.EXCHANGE_MCX,
+      "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+      "orderType": sn.constants.ORDER_TYPE_LIMIT,
+      "price": "5027",
+      "quantity": "20",
+      "disclosedQuantity": "",
+      "orderValidity": sn.constants.VALIDITY_DAY,
+      "productType": sn.constants.PRODUCT_NRML,
+      "afterMarketOrderFlag": "NO"
+    }
+  };
+
+    sn.snapi.placeOrder(order).then((data) => { console.log('PlaceOrder:' + data); }).catch((error) => { console.log(error) });
+
+  ```
+
+Response:  
+  ```javascript
+  PlaceOrder:{
+      "serverTime": "23/11/20 12:51:39",
+      "msgId": "b7d6acfe-a147-4421-8fd4-60551a8f3c72",
+      "orderNumber": "201123000000008",
+      "status": "Success",
+      "statusMessage": "NRML Order request placed successfully",
+      "exchangeOrderStatus": "PENDING",
+      "orderDetails": {
+        "pendingQuantity": "20",
+        "avgExecutionPrice": "0.00",
+        "tradingSymbol": "GOLDPETAL20NOVFUT",
+        "triggerPrice": "0.00",
+        "exchange": "MCX",
+        "totalQuantity": "20",
+        "transactionType": "BUY",
+        "productType": "NRML",
+        "orderType": "L",
+        "quantity": "20",
+        "filledQuantity": "0",
+        "orderPrice": "5027.0",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 12:51:39"
+      }
+    }
+  ```
+</details>
+
 <a name="placeOrderBO"/>
 
 ## PlaceOrderBO
@@ -1570,6 +1686,92 @@ Response:
   ```
 </details>
 
+<details>
+  <summary>Sample PlaceOrderBO Request/Response  for Future & Options segment</summary>
+
+Request:
+  ```javascript
+
+  ```
+
+Response:  
+  ```javascript
+  
+  ```
+</details>
+
+
+<details>
+  <summary>Sample PlaceOrderBO Request/Response  for Currency segment</summary>
+
+Request:
+  ```javascript
+
+  ```
+
+Response:  
+  ```javascript
+  
+  ```
+</details>
+
+
+<details>
+  <summary>Sample PlaceOrderBO Request/Response  for Commodity segment</summary>
+
+Request:
+  ```javascript
+  var BOorder = {
+        body: {
+            "symbolName": "GOLDPETAL20NOVFUT",
+            "exchange": sn.constants.EXCHANGE_MCX,
+            "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+            "orderType": sn.constants.ORDER_TYPE_LIMIT,
+            "quantity": "10",
+            "disclosedQuantity": "",
+            "price": "5027",
+            "priceType": "LTP",
+            "valueType": "Absolute",
+            "orderValidity": sn.constants.VALIDITY_DAY,
+            "productType": sn.constants.PRODUCT_BO,
+            "squareOffValue": "50.00",
+            "stopLossValue": "20.00",
+            "trailingStopLoss": "5"
+        }
+    };
+    sn.snapi.placeOrderBO(BOorder).then((data) => { console.log('PlaceOrderBO:' + data); }).catch((error) => {console.log(error)});
+  ```
+
+Response:  
+  ```javascript
+    PlaceOrderBO:{
+      "serverTime": "23/11/20 13:11:30",
+      "msgId": "13dbdb56-818c-4e08-8072-2ed7a3c0b8fc",
+      "orderNumber": "201123000000009",
+      "status": "Success",
+      "exchangeOrderStatus": "PENDING",
+      "statusMessage": "Bracket Order request placed successfully",
+      "orderDetails": {
+        "pendingQuantity": "10",
+        "avgExecutionPrice": "0.00",
+        "tradingSymbol": "GOLDPETAL20NOVFUT",
+        "triggerPrice": "0.00",
+        "exchange": "MCX",
+        "totalQuantity": "10",
+        "transactionType": "BUY",
+        "productType": "BO",
+        "orderType": "L",
+        "quantity": "10",
+        "filledQuantity": "0",
+        "orderPrice": "5027.0",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 13:11:32"
+      }
+    }
+  ```
+</details>
+
 <a name="placeOrderCO"/>
 
 ## PlaceOrderCO
@@ -1577,13 +1779,13 @@ Response:
 The PlaceOrderCO function `placeOrderCO()` can be used to place an equity/derivative CO order to the exchange i.e the place order CO request typically registers the order with OMS and when it happens successfully, a success response is returned. Successful placement of an order via the API does not imply its successful execution. So when an order is successfully placed the placeOrderCO returns an orderNumber in response, and in scenarios as above the actual order status can be checked separately using the orderStatus API call. 
 
 #### Parameters:
-```NodeJS
+```javascript
 symbolName,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,marketProtection,triggerPrice
 ```
 <details>
   <summary>sample PlaceOrderCO Request/Response  for Cash segment</summary>
   
-  Request:
+Request:
   ```javascript
 	var COorder = {
     body: {
@@ -1633,6 +1835,61 @@ Response:
   ```
 </details>
 
+
+<details>
+  <summary>Sample PlaceOrderCO Request/Response  for Commodity segment</summary>
+
+Request:
+  ```javascript
+  var COorder = {
+    body: {
+        "symbolName": "ZINC20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_MCX,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_MARKET,
+        "quantity": "150",
+        "disclosedQuantity": "",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_CO,
+        "afterMarketOrderFlag": "NO",
+        "triggerPrice": "220.25"
+
+    }
+};
+
+  sn.snapi.placeOrderCO(COorder).then((data) => { console.log('PlaceOrder:' + data); }).catch((error) => {console.log(error)});
+  ```
+
+Response:  
+  ```javascript
+    PlaceOrderCO:{
+      "serverTime": "23/11/20 13:37:29",
+      "msgId": "855b6efa-41b0-411b-8e92-54d49b8183b2",
+      "orderNumber": "201123000117467",
+      "status": "Success",
+      "statusMessage": "CO Order request placed successfully",
+      "exchangeOrderStatus": "PENDING",
+      "orderDetails": {
+          "pendingQuantity": "150",
+          "avgExecutionPrice": "0.00",
+          "orderPlacedBy": "--",
+          "tradingSymbol": "ZINC20NOVFUT",
+          "triggerPrice": "220.25",
+          "exchange": "MCX",
+          "totalQuantity": "150",
+          "transactionType": "BUY",
+          "productType": "CO",
+          "orderType": "MKT",
+          "quantity": "150",
+          "filledQuantity": "0",
+          "orderPrice": "0.0",
+          "filledPrice": "0.00",
+          "orderValidity": "DAY",
+          "orderTime": "23/11/2020 13:37:32"
+      }
+    }
+  ```
+</details>
 <a name="modifyOrder"/>
 
 ## ModifyOrder
