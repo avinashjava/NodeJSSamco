@@ -2255,7 +2255,7 @@ Response:
     "msgId": "bfe30991-22a1-4814-9b36-c654cf96c21a",
     "orderNumber": "201123000134794",
     "status": "Success",
-    "statusMessage": Order 201123000152416 modified successfully",
+    "statusMessage": Order 201123000134794 modified successfully",
     "exchangeOrderStatus": "PENDING",
     "orderDetails": {
         "pendingQuantity": "15",
