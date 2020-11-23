@@ -1511,15 +1511,14 @@ Request:
   ```javascript
 	var order = {
     body: {
-        "symbolName": "TCS",
-        "exchange": sn.constants.EXCHANGE_NSE,
+        "symbolName": "BANKNIFTY20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_NFO,
         "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
-        "orderType": sn.constants.ORDER_TYPE_LIMIT,
-        "price":"2374",
-        "quantity": "200",
+        "orderType": sn.constants.ORDER_TYPE_MARKET,
+        "quantity": "500",
         "disclosedQuantity": "",
         "orderValidity": sn.constants.VALIDITY_DAY,
-        "productType": sn.constants.PRODUCT_CNC,
+        "productType": sn.constants.PRODUCT_MIS,
         "afterMarketOrderFlag": "NO"
       }
     };
@@ -1530,7 +1529,32 @@ Request:
 
 Response:  
   ```javascript
-	
+PlaceOrder:	{
+    "serverTime": "23/11/20 15:14:11",
+    "msgId": "28837fc5-23e3-4a39-9da8-9d0ffdd36f31",
+    "orderNumber": "201123000152416",
+    "status": "Success",
+    "statusMessage": "MIS Order request placed successfully",
+    "exchangeOrderStatus": "PENDING",
+    "orderDetails": {
+        "pendingQuantity": "50",
+        "avgExecutionPrice": "0.00",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "BANKNIFTY20NOVFUT",
+        "triggerPrice": "0.00",
+        "exchange": "NFO",
+        "totalQuantity": "50",
+        "transactionType": "BUY",
+        "productType": "MIS",
+        "orderType": "L",
+        "quantity": "50",
+        "filledQuantity": "0",
+        "orderPrice": "29891.05",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 15:14:11"
+    }
+}
   ```
 </details>
 
@@ -1715,11 +1739,57 @@ Response:
 Request:
   ```javascript
 
+  var BOorder = {
+    body: {
+        "symbolName": "BANKNIFTY20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_NFO,
+        "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
+        "orderType": sn.constants.ORDER_TYPE_LIMIT,
+        "quantity": "25",
+        "disclosedQuantity": "",
+        "price": "28976.95",
+        "priceType": "LTP",
+        "valueType": "Absolute",
+        "orderValidity": sn.constants.VALIDITY_DAY,
+        "productType": sn.constants.PRODUCT_BO,
+        "squareOffValue": "50.00",
+        "stopLossValue": "10.00",
+        "trailingStopLoss": "5"
+    }
+};
+sn.snapi.placeOrderBO(BOorder).then((data) => { console.log('PlaceOrderBO:' + data); }).catch((error) => {console.log(error)});
+
+
   ```
 
 Response:  
   ```javascript
-  
+ PlaceOrderBO {
+    "serverTime": "23/11/20 15:11:30",
+    "msgId": "1e77f2f7-4951-4e5a-8df1-071ff184e863",
+    "orderNumber": "201123000151445",
+    "status": "Success",
+    "statusMessage": "Bracket Order request placed successfully",
+    "exchangeOrderStatus": "PENDING",
+    "orderDetails": {
+        "pendingQuantity": "25",
+        "avgExecutionPrice": "0.00",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "BANKNIFTY20NOVFUT",
+        "triggerPrice": "0.00",
+        "exchange": "NFO",
+        "totalQuantity": "25",
+        "transactionType": "BUY",
+        "productType": "BO",
+        "orderType": "L",
+        "quantity": "25",
+        "filledQuantity": "0",
+        "orderPrice": "28976.95",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 15:11:30"
+    }
+}
   ```
 </details>
 
@@ -1910,16 +1980,17 @@ Request:
   ```javascript
 	var COorder = {
     body: {
-        "symbolName": "TCS",
-        "exchange": sn.constants.EXCHANGE_NSE,
+        "symbolName": "BANKNIFTY20NOVFUT",
+        "exchange": sn.constants.EXCHANGE_NFO,
         "transactionType": sn.constants.TRANSACTION_TYPE_BUY,
-        "orderType": sn.constants.ORDER_TYPE_MARKET,
-        "quantity": "15",
+        "orderType": sn.constants.ORDER_TYPE_LIMIT,
+        "price":"29028.60",
+        "quantity": "50",
         "disclosedQuantity": "",
         "orderValidity": sn.constants.VALIDITY_DAY,
         "productType": sn.constants.PRODUCT_CO,
         "afterMarketOrderFlag": "NO",
-        "triggerPrice": "2650"
+        "triggerPrice": "28567"
 
     }
   };
@@ -1929,30 +2000,31 @@ Request:
 Response:  
   ```javascript
   PlaceOrderCO:{
-    "serverTime": "20/11/20 16:17:46",
-    "msgId": "7ae6d72c-a64c-4884-976a-f8723904cd57",
-    "orderNumber": "201120000000031",
+    "serverTime": "23/11/20 15:17:31",
+    "msgId": "59f7356a-341d-432a-b78f-5e8e536fb550",
+    "orderNumber": "201123000154270",
     "status": "Success",
-    "exchangeOrderStatus": "PENDING",
     "statusMessage": "CO Order request placed successfully",
+    "exchangeOrderStatus": "PENDING",
     "orderDetails": {
-      "pendingQuantity": "15",
-      "avgExecutionPrice": "0.00",
-      "tradingSymbol": "TCS-EQ",
-      "triggerPrice": "2650.00",
-      "exchange": "NSE",
-      "totalQuantity": "15",
-      "transactionType": "BUY",
-      "productType": "CO",
-      "orderType": "L",
-      "quantity": "15",
-      "filledQuantity": "0",
-      "orderPrice": "2745.95",
-      "filledPrice": "0.00",
-      "orderValidity": "DAY",
-      "orderTime": "20/11/2020 16:17:46"
+        "pendingQuantity": "0",
+        "avgExecutionPrice": "0.00",
+        "orderPlacedBy": "--",
+        "tradingSymbol": "BANKNIFTY20NOVFUT",
+        "triggerPrice": "28567.00",
+        "exchange": "NFO",
+        "totalQuantity": "50",
+        "transactionType": "BUY",
+        "productType": "CO",
+        "orderType": "L",
+        "quantity": "50",
+        "filledQuantity": "0",
+        "orderPrice": "29028.6",
+        "filledPrice": "0.00",
+        "orderValidity": "DAY",
+        "orderTime": "23/11/2020 15:17:31"
     }
-    }
+}
   ```
 </details>
 
