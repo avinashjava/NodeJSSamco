@@ -1154,7 +1154,7 @@ The IndexQuote function name in NodeJS is `getIndexQuotes()`
 indexName
 ```
 <details>
-  <summary>Sample IndexQuote request</summary>
+  <summary>Sample IndexQuote Request</summary>
   
   ```javascript
 	sn.snapi.getIndexQuotes("SENSEX").then((data) => { console.log('GetIndexQuotes:' + data); }).catch((error) => {console.log(error)});
