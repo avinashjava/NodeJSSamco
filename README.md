@@ -2436,7 +2436,7 @@ orderNumber
 
 ## OrderStatus
 
-The OrderStatus function `orderStatus` is used to get status of an order placed previously. This API returns all states of the orders,but not limited to open, pending, and partially filled ones.
+The OrderStatus function `orderStatus()` is used to get status of an order placed previously. This API returns all states of the orders,but not limited to open, pending, and partially filled ones.
 
 #### Parameters:
 ```NodeJS
