@@ -6,7 +6,7 @@ This documentation covers details of the NodeJS bridge / SDK provided by SAMCO, 
 
 The primary purpose of this NodeJS Bridge is to help our customers quickly create NodeJS based client scripts using our SDK and integrate with StockNote APIs. Our NodeJS Bridge provides a wrapper over the RESTful StockNote APIs where the HTTP calls have been converted to method calls with JSON responses.
 
-Please refer the below documentation for details on installation, set up and API specific sample code/request-responses to create your own NodeJS client code.
+Please refer the below documentation for details on installation, set up and API specific Sample code/request-responses to create your own NodeJS client code.
 
 ## Installation
 
@@ -42,9 +42,7 @@ Stocknote NodeJS SDK is a NodeJS client library for easily accessing the stockno
 For specific details on parameters passed on the request, and details about API response, please refer our [Stocknote API documentation](https://developers.stocknote.com/api/?NodeJS#stocknote-api-documentation).
 
 ## List Of APIS
-<details>
-  <summary>Click to expand</summary>
-  
+
 * [Login](#login)
 * [SearchEquityDerivative](#searchequityderivative)
 * [Quote](#quote)
@@ -72,7 +70,6 @@ For specific details on parameters passed on the request, and details about API 
 * [IndexHistoricalCandleData](#indexHistoricalCandleData)
 * [Logout](#logout)
 
-</details>
 
 ## API Promises
 ```javascript
@@ -165,7 +162,7 @@ var logindata = {
 3. Get the session token form login response and set it to `setSessionToken()` function.
 ```NodeJS
 sn.snapi.setSessionToken("f83bb5461751e98e01ca5af451e49e11");
-## this function will help to reduce to pass session token for other apis. This will automate the session token for other apis
+## this function will help to pass session token for other apis. This will automate the session token for other apis
 ```
 
 <a name="searchequityderivative"/>
@@ -1676,7 +1673,7 @@ The PlaceOrderBO function `placeOrderBO()` can be used to place an equity/deriva
 symbolName,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,trailingStopLoss,stopLossValue,squareOffValue,valueType,priceType,
 ```
 <details>
-  <summary>sample PlaceOrderBO Request/Response  for Cash segment</summary>
+  <summary>Sample PlaceOrderBO Request/Response  for Cash segment</summary>
   
 Request:
   ```javascript
@@ -1920,7 +1917,7 @@ The PlaceOrderCO function `placeOrderCO()` can be used to place an equity/deriva
 symbolName,exchange,transactionType,orderType,price,quantity,disclosedQuantity,orderValidity,productType,marketProtection,triggerPrice
 ```
 <details>
-  <summary>sample PlaceOrderCO Request/Response  for Cash segment</summary>
+  <summary>Sample PlaceOrderCO Request/Response  for Cash segment</summary>
   
 Request:
   ```javascript
@@ -1973,7 +1970,7 @@ Response:
 </details>
 
 <details>
-  <summary>sample PlaceOrderCO Request/Response  for Future & Options segment</summary>
+  <summary>Sample PlaceOrderCO Request/Response  for Future & Options segment</summary>
   
 Request:
   ```javascript
@@ -2510,7 +2507,7 @@ sn.snapi.cancelOrders("200616000000350").then((data) => { console.log('cancelOrd
 </details>
 
 <details>
-  <summary>sample CancelOrder Response</summary>
+  <summary>Sample CancelOrder Response</summary>
   
   ```javascript
 	{
@@ -2538,7 +2535,7 @@ If the main leg is executed and if Stop loss is hit, API will return error messa
 orderNumber
 ```
 <details>
-  <summary>sample CancelOrderCO Request</summary>
+  <summary>Sample CancelOrderCO Request</summary>
   
   ```javascript
 	sn.snapi.cancelCOOrder("200617000000181").then((data) => { console.log('cancelCOOrder:' + data); }).catch((error) => {console.log(error)});
@@ -2546,7 +2543,7 @@ orderNumber
 </details>
 
 <details>
-  <summary>sample CancelOrderCO Response</summary>
+  <summary>Sample CancelOrderCO Response</summary>
   
   ```javascript
 	{
@@ -2574,7 +2571,7 @@ orderNumber
 ```
 
 <details>
-  <summary>sample CancelOrderBO Request</summary>
+  <summary>Sample CancelOrderBO Request</summary>
   
   ```javascript
 sn.snapi.cancelBOOrder("200617000000375").then((data) => { console.log('cancelBOOrder:' + data); }).catch((error) => {console.log(error)});
@@ -2583,7 +2580,7 @@ sn.snapi.cancelBOOrder("200617000000375").then((data) => { console.log('cancelBO
 </details>
 
 <details>
-  <summary>sample CancelOrderBO Response</summary>
+  <summary>Sample CancelOrderBO Response</summary>
   
   ```javascript
 	{
@@ -2652,7 +2649,7 @@ sn.snapi.tradeBook().then((data) => { console.log('TradeBook:' + data); }).catch
 
 ## Positions
 
-The Postions function `userPostions()` gets the position details of the user (The details of equity, derivative, commodity, currency borrowed or owned by the user).
+The Postions function `userPositions()` gets the position details of the user (The details of equity, derivative, commodity, currency borrowed or owned by the user).
 
 #### Parameters:
 ```NodeJS
@@ -2662,7 +2659,7 @@ positiontype
   <summary>Sample Positions Request</summary>
   
   ```javascript
-sn.snapi.userPostions("DAY").then((data) => { console.log("UserPositions:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.userPositions("DAY").then((data) => { console.log("userPositions:" + data); }).catch((error) => { console.error(error) });
   ```
 </details>
 
@@ -2716,7 +2713,7 @@ sn.snapi.userPostions("DAY").then((data) => { console.log("UserPositions:" + dat
 
 ## PositionConversion
 
-The PostionConversion function `postionConversion()` is used to convert an existing position of a margin product to a different margin product type. All or a subset of an existing position quantity can be converted to a different product type.The available margin product types are MARGIN_INTRADAY_SQUAREOFF(MIS), CASHNCARRY(CNC), NORMAL(NRML).
+The PositionConversion function `positionConversion()` is used to convert an existing position of a margin product to a different margin product type. All or a subset of an existing position quantity can be converted to a different product type.The available margin product types are MARGIN_INTRADAY_SQUAREOFF(MIS), CASHNCARRY(CNC), NORMAL(NRML).
 
 #### Parameters:
 ```javascript
@@ -2741,7 +2738,7 @@ var conversion = {
     }
 };
 
-sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionConversion(conversion).then((data) => { console.log("positionConversion:" + data); }).catch((error) => { console.error(error) });
   ```
   Response:
   ```javascript
@@ -2773,7 +2770,7 @@ var conversion = {
     }
 };
 
-sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionConversion(conversion).then((data) => { console.log("positionConversion:" + data); }).catch((error) => { console.error(error) });
   ```
 
 Response :  
@@ -2806,7 +2803,7 @@ var conversion = {
     }
 };
 
-sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionConversion(conversion).then((data) => { console.log("positionConversion:" + data); }).catch((error) => { console.error(error) });
   ```
 
 Response :  
@@ -2840,7 +2837,7 @@ var conversion = {
     }
 };
 
-sn.snapi.postionConversion(conversion).then((data) => { console.log("postionConversion:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionConversion(conversion).then((data) => { console.log("positionConversion:" + data); }).catch((error) => { console.error(error) });
   ```
 
 Response :  
@@ -2856,29 +2853,11 @@ Response :
 </details>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <a name="positionSquareOff"/>
 
 ## PositionSquareOff
 
-The PositionSquareoff function `positonSquareoff()` helps the user to SqareOff existing position. Mostly used in day trading, in which user buy or sell a particular quantity of a stock and later in the day reverse the transaction to earn a profit. 
+The PositionSquareoff function `positionSquareoff()` helps the user to SqareOff existing position. Mostly used in day trading, in which user buy or sell a particular quantity of a stock and later in the day reverse the transaction to earn a profit. 
 
 #### Parameters:
 ```javascript
@@ -2903,7 +2882,7 @@ symbolName,exchange,transactionType,productType,netQuantity
     }
   };
 
-sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionSquareoff(squareOff).then((data) => { console.log("positionSquareoff:" + data); }).catch((error) => { console.error(error) });
   ```
 
   Response :
@@ -2942,7 +2921,7 @@ sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquare
     }
   };
 
-sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionSquareoff(squareOff).then((data) => { console.log("positionSquareoff:" + data); }).catch((error) => { console.error(error) });
   ```
   Response :
   
@@ -2979,7 +2958,7 @@ sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquare
     }
   };
 
-sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionSquareoff(squareOff).then((data) => { console.log("positionSquareoff:" + data); }).catch((error) => { console.error(error) });
   ```
   Response :
   
@@ -3016,7 +2995,7 @@ sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquare
     }
   };
 
-sn.snapi.positonSquareoff(squareOff).then((data) => { console.log("postionSquareoff:" + data); }).catch((error) => { console.error(error) });
+sn.snapi.positionSquareoff(squareOff).then((data) => { console.log("positionSquareoff:" + data); }).catch((error) => { console.error(error) });
   ```
   Response :
   
@@ -4021,7 +4000,7 @@ This section contains the list of possible constant values that can be passed fo
     POSITION_TYPE_DAY
     POSITION_TYPE_NET
  
-    Example:- "position_type": sn.constants.POSITION_TYPE_DAY
+    Example:- "positionType": sn.constants.POSITION_TYPE_DAY
 </details>
 
 <details>
